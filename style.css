@@ -26,3 +26,9 @@ p {
 .card p:last-child {
 	margin-bottom: 0;
 }
+
+
+.bg-slate-800 {
+    display: flex;
+    justify-content: center;
+}
