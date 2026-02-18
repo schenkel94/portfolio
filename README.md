@@ -1,4 +1,4 @@
-# 📊 Mário Schenkel | Business Data Analyst
+# Mário Schenkel | Business Data Analyst
 
 Transformo dados complexos em insights estratégicos para impulsionar decisões de negócio. Minha trajetória une o rigor da **Controladoria e FP&A** com o poder de **Data Analytics & Engineering**.
 
@@ -6,7 +6,7 @@ Transformo dados complexos em insights estratégicos para impulsionar decisões 
 
 ---
 
-## 🚀 Sobre Mim
+## Sobre Mim
 Com sólida bagagem em Revenue Management e Pricing, migrei para a área de dados para agregar valor através de automação e visualização avançada. Atuo no cruzamento entre negócios e tecnologia, garantindo que cada métrica gerada tenha um propósito estratégico claro.
 
 - **Atualmente:** Business Data Analyst no **Paraná Banco S/A**, liderando projetos de dados e transformação de informações financeiras.
@@ -15,7 +15,7 @@ Com sólida bagagem em Revenue Management e Pricing, migrei para a área de dado
 
 ---
 
-## 🛠️ Stack Técnica
+## Stack Técnica
 | Categoria | Tecnologias |
 | :--- | :--- |
 | **Análise & BI** | Power BI (DAX), Metabase, Tableau, Looker, Storytelling |
@@ -25,9 +25,9 @@ Com sólida bagagem em Revenue Management e Pricing, migrei para a área de dado
 
 ---
 
-## 📂 Projetos em Destaque (Disponíveis neste repositório)
+## Projetos em Destaque (Disponíveis neste repositório)
 
-### 1. 🗣️ Voice of Customer Dashboard
+### 1. 🗣️ Voice of Customer Dashboard [VoC Repo](https://github.com/schenkel94/VoC/)
 Classificação automática de feedbacks usando **NLP e GPT** para análise de sentimentos e tópicos, reduzindo em 90% o tempo de análise manual.
 - **Ferramentas:** Metabase, Python, SQL.
 
@@ -39,7 +39,7 @@ Análise detalhada de receita e custos com alertas automáticos para pontos de v
 Segmentação ABC de clientes e análise de inadimplência, resultando em uma redução de 35% nos atrasos de pagamento.
 - **Ferramentas:** Power BI, dbt, BigQuery.
 
-### 🧘 Projeto Especial: [ZenOffice](https://zenoffice.netlify.app/)
+### 🧘 Projeto Pessoal: [ZenOffice](https://zenoffice.netlify.app/)
 Uma ferramenta de produtividade para trabalhadores remotos, focada em foco (Pomodoro) e saúde mental.
 
 ---
