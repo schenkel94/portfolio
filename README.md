@@ -7,11 +7,7 @@ Transformo dados complexos em insights estratégicos para impulsionar decisões 
 ---
 
 ## Sobre Mim
-Com sólida bagagem em Revenue Management e Pricing, migrei para a área de dados para agregar valor através de automação e visualização avançada. Atuo no cruzamento entre negócios e tecnologia, garantindo que cada métrica gerada tenha um propósito estratégico claro.
-
-- **Atualmente:** Business Data Analyst no **Paraná Banco S/A**, liderando projetos de dados e transformação de informações financeiras.
-- **Background:** Experiência em empresas como **Zenvia** (IA Generativa + dbt) e **Saque e Pague** (Dashboards de Rentabilidade).
-- **Educação:** Bacharel em Administração (Unisinos) e MBA em Adm. de Banco de Dados.
+Analista de Dados com experiência em transformar informações complexas em insights estratégicos acionáveis. Especializado em Business Intelligence, Power BI e análise de dados para impulsionar decisões baseadas em evidências.
 
 ---
 
@@ -19,9 +15,9 @@ Com sólida bagagem em Revenue Management e Pricing, migrei para a área de dado
 | Categoria | Tecnologias |
 | :--- | :--- |
 | **Análise & BI** | Power BI (DAX), Metabase, Tableau, Looker, Storytelling |
-| **Engenharia de Dados** | SQL (Avançado), dbt, Snowflake, Databricks, ETL |
+| **Engenharia de Dados** | SQL (Avançado), DBT, Snowflake, Databricks, ETL |
 | **Linguagens** | Python (Pandas, Scikit-learn, NLP), HTML/CSS |
-| **Ferramentas & Cloud** | Git, Azure DevOps, GCP, IA Generativa (GPT Integration) |
+| **Ferramentas & Cloud** | Git, Azure DevOps, GCP, IA Generativa |
 
 ---
 
@@ -35,7 +31,7 @@ Classificação automática de feedbacks usando **NLP e GPT** para análise de s
 Identificação dos clientes com maior risco de churn, direcionando ações de retenção que poderiam reduzir a evasão em até 18% e aumentar a precisão da atuação comercial.
 - **Ferramentas:** Databricks, Python, Spark, Ploty
 
-### 3. 🏦 Financeiro Analítico B2B
+### 3. 🏦 Financeiro Analítico B2B (Deploy em breve)
 Segmentação ABC de clientes e análise de inadimplência, resultando em uma redução de 35% nos atrasos de pagamento.
 - **Ferramentas:** Power BI, dbt, BigQuery.
 
