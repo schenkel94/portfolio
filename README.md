@@ -2,7 +2,7 @@
 
 Transformo dados complexos em insights estratégicos para impulsionar decisões de negócio. Minha trajetória une o rigor da **Controladoria e FP&A** com o poder de **Data Analytics & Engineering**.
 
-[🌐 Acesse meu Portfólio Web](https://schenkel94.github.io/portfolio/) | [🧘 Conheça o ZenOffice](https://zenoffice.netlify.app/) | [🔗 LinkedIn](https://www.linkedin.com/in/marioschenkel)
+[Acesse meu Portfólio Web](https://schenkel94.github.io/portfolio/) | [Conheça o ZenOffice](https://zenoffice.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/marioschenkel)
 
 ---
 
