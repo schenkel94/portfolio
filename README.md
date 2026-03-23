@@ -29,11 +29,11 @@ Com sólida bagagem em Revenue Management e Pricing, migrei para a área de dado
 
 ### 1. 🗣️ Voice of Customer Dashboard [VoC Repo](https://github.com/schenkel94/VoC/)
 Classificação automática de feedbacks usando **NLP e GPT** para análise de sentimentos e tópicos, reduzindo em 90% o tempo de análise manual.
-- **Ferramentas:** Metabase, Python, SQL.
+- **Ferramentas:** Databricks, Python, Power Bi.
 
-### 2. 💳 Rentabilidade por PDV
-Análise detalhada de receita e custos com alertas automáticos para pontos de venda abaixo da margem, aumentando a lucratividade operacional em 22%.
-- **Ferramentas:** Power BI, SQL, DAX.
+### 2. 🗣️ Customer Churn Prediction [Churn Repo](https://github.com/schenkel94/churn)
+Identificação dos clientes com maior risco de churn, direcionando ações de retenção que poderiam reduzir a evasão em até 18% e aumentar a precisão da atuação comercial.
+- **Ferramentas:** Databricks, Python, Spark, Ploty
 
 ### 3. 🏦 Financeiro Analítico B2B
 Segmentação ABC de clientes e análise de inadimplência, resultando em uma redução de 35% nos atrasos de pagamento.
