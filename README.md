@@ -44,7 +44,7 @@ Classificação automática de feedbacks usando **NLP e GPT** para análise de s
 Identificação dos clientes com maior risco de churn, direcionando ações de retenção que poderiam reduzir a evasão em até 18% e aumentar a precisão da atuação comercial.
 - **Ferramentas:** Databricks, Python, Spark, Render, Plotly
 
-### 3. 🏦 [DRE por PDV](https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV)
+### 3. 🏦 DRE por PDV [Finanças Repo](https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV)
 Analise autônoma de pontos ofensores de DRE e direcionamentos de plano de ação por PDV (Ponto de Venda).
 - **Ferramentas:** Jupyter Notebook, Plotly, HF Spaces
 
@@ -55,7 +55,7 @@ Uma ferramenta de produtividade para trabalhadores remotos, focada em foco e sa�
 
 ## 📫 Contato
 - **Email:** [schenkel.mario@hotmail.com](mailto:schenkel.mario@hotmail.com)
-- **Localização:** Porto Alegre, RS - Brasil 🇧🇷
+- **Localização:** Novo Hamburgo, RS - Brasil 🇧🇷
 - **SLA de Resposta:** 24 horas úteis.
 
 ---
