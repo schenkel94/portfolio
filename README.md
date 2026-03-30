@@ -1,23 +1,36 @@
-# Mário Schenkel | Business Data Analyst
+# Mário Schenkel  
+### Data Analyst | Analytics Engineer
 
-Transformo dados complexos em insights estratégicos para impulsionar decisões de negócio.
+Transformo dados complexos em **insights estratégicos** para impulsionar decisões de negócio.
 
-[Acesse meu Portfólio Web](https://schenkel94.github.io/portfolio/) | [Conheça o ZenOffice](https://zenoffice.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/marioschenkel)
+<p align="center">
+  <a href="https://schenkel94.github.io/portfolio/">
+    <img src="https://img.shields.io/badge/🌐 Portfólio-000?style=for-the-badge&logo=google-chrome&logoColor=white" />
+  </a>
+  <a href="https://zenoffice.netlify.app/">
+    <img src="https://img.shields.io/badge/🧘 ZenOffice-0A66C2?style=for-the-badge&logo=appveyor&logoColor=white" />
+  </a>
+  <a href="https://www.linkedin.com/in/marioschenkel">
+    <img src="https://img.shields.io/badge/🔗 LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</p>
 
 ---
 
-## Sobre Mim
-Analista de Dados com experiência em transformar informações complexas em insights estratégicos acionáveis. Especializado em Business Intelligence, Power BI e análise de dados para impulsionar decisões baseadas em evidências.
+## 👨‍💻 Sobre Mim
+
+Analista de Dados com experiência em transformar informações complexas em **insights estratégicos acionáveis**.  
+Especializado em **Business Intelligence, Power BI e análise de dados**, com foco em impulsionar decisões baseadas em evidências.
 
 ---
 
-## Stack Técnica
+## 💼 Stack Técnica
 | Categoria | Tecnologias |
 | :--- | :--- |
 | **Análise & BI** | Power BI (DAX), Metabase, Tableau, Looker, Storytelling |
 | **Engenharia de Dados** | SQL (Avançado), DBT, Snowflake, Databricks, ETL |
-| **Linguagens** | Python (Pandas, Scikit-learn, NLP), HTML/CSS |
-| **Ferramentas & Cloud** | Git, Azure DevOps, GCP, IA Generativa |
+| **Linguagens** | Python (Pandas, Jupyter, NLP), HTML/CSS |
+| **Ferramentas & Cloud** | Git, Azure DevOps, IA Generativa |
 
 ---
 
@@ -29,14 +42,14 @@ Classificação automática de feedbacks usando **NLP e GPT** para análise de s
 
 ### 2. 🗣️ Customer Churn Prediction [Churn Repo](https://github.com/schenkel94/churn)
 Identificação dos clientes com maior risco de churn, direcionando ações de retenção que poderiam reduzir a evasão em até 18% e aumentar a precisão da atuação comercial.
-- **Ferramentas:** Databricks, Python, Spark, Ploty
+- **Ferramentas:** Databricks, Python, Spark, Render, Plotly
 
-### 3. 🏦 Financeiro Analítico B2B (Deploy em breve)
-Segmentação ABC de clientes e análise de inadimplência, resultando em uma redução de 35% nos atrasos de pagamento.
-- **Ferramentas:** Power BI, dbt, BigQuery.
+### 3. 🏦 [DRE por PDV](https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV)
+Analise autônoma de pontos ofensores de DRE e direcionamentos de plano de ação por PDV (Ponto de Venda).
+- **Ferramentas:** Jupyter Notebook, Plotly, HF Spaces
 
 ### 🧘 Projeto Pessoal: [ZenOffice](https://zenoffice.netlify.app/)
-Uma ferramenta de produtividade para trabalhadores remotos, focada em foco (Pomodoro) e saúde mental.
+Uma ferramenta de produtividade para trabalhadores remotos, focada em foco e saúde mental.
 
 ---
 
