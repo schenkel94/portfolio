@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mensagem enviada | Mario Schenkel</title>
+    <meta name="theme-color" content="#020617" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #020617;
+        --surface: #0f172a;
+        --line: #1e2b47;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --primary: #3b82f6;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: var(--bg);
+        color: var(--text);
+        padding: 20px;
+      }
+      .card {
+        width: min(680px, 100%);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+        padding: 26px;
+      }
+      h1 { margin: 8px 0 10px; }
+      p { margin: 0 0 18px; color: var(--muted); }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      a {
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .primary { background: var(--primary); color: white; }
+      .ghost {
+        border: 1px solid var(--line);
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <article class="card">
+      <h1>Mensagem enviada com sucesso.</h1>
+      <p>Obrigado pelo contato. Retorno em ate 24 horas uteis.</p>
+      <div class="actions">
+        <a class="primary" href="/">Voltar para o portfolio</a>
+        <a class="ghost" href="https://www.linkedin.com/in/marioschenkel" target="_blank" rel="noreferrer">Abrir LinkedIn</a>
+      </div>
+    </article>
+  </body>
+</html>
