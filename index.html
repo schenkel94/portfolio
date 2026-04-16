@@ -406,6 +406,37 @@
                 <div class="portfolio-slide">
                 <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
                     <div class="relative overflow-hidden h-48">
+                        <img src="assets/dashboard-demo.gif"
+                             alt="Dashboard executivo de e-commerce no Metabase"
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2 gap-3">
+                            <h3 class="text-xl font-bold text-white">DBT + Metabase E-commerce case</h3>
+                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full whitespace-nowrap">Analytics Eng.</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 text-sm">
+                            Pipeline analítico completo, dos dados raw ao dashboard executivo, com dbt, DuckDB e Metabase.
+                        </p>
+                        <div class="flex justify-between items-center gap-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">dbt</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">DuckDB</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Metabase</span>
+                            </div>
+                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center whitespace-nowrap" onclick="openModal('modalDbtMetabase')">
+                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="portfolio-slide">
+                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
+                    <div class="relative overflow-hidden h-48">
                         <img src="assets/VOC.png"
                              alt="Voice of Customer Dashboard" 
                              class="w-full h-full object-cover">
@@ -433,7 +464,7 @@
                 </div>
                 </div>
                 
-                <!-- Case 2 -->
+                <!-- Case 3 -->
                 <div class="portfolio-slide">
                 <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
                     <div class="relative overflow-hidden h-48">
@@ -464,7 +495,7 @@
                 </div>
                 </div>
                 
-                <!-- Case 3 -->
+                <!-- Case 4 -->
                 <div class="portfolio-slide">
                 <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
                     <div class="relative overflow-hidden h-48">
@@ -512,6 +543,92 @@
     </section>
 
     <!-- Portfolio Modals -->
+    <!-- DBT + Metabase Modal -->
+    <div id="modalDbtMetabase" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modalDbtMetabase')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="p-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <div class="sticky top-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">DBT + Metabase E-commerce case</h3>
+                            <p class="text-slate-400 mb-6">Analytics Engineering e BI em um fluxo completo de e-commerce</p>
+
+                            <div class="mb-8">
+                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Pipeline de dados do raw ao dashboard executivo, simulando um fluxo real de e-commerce.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Modelagem em camadas: raw, staging, quality e analytics.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Testes dbt para chaves, unicidade, integridade referencial, valores aceitos e regras de receita.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-3">Tecnologias</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">dbt</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">DuckDB</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Metabase</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Python</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2">
+                        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
+                            <img src="assets/dashboard-demo.gif"
+                                 alt="Dashboard demo do case DBT e Metabase"
+                                 class="rounded-lg w-full">
+                        </div>
+
+                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+                            <h4 class="text-lg font-bold text-white mb-3">Processo do Projeto</h4>
+                            <p class="text-sm text-slate-400 mb-4">
+                                O case cobre geração de dados, transformação, testes, documentação, camada analítica e visualização. A estrutura deixa a análise mais confiável, reprodutível e fácil de evoluir.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">1. Dados</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">2. Transformação</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">3. Testes</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">4. Documentação</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">5. Analytics</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">6. Dashboard</span>
+                            </div>
+                            <a href="https://github.com/schenkel94/DBT-Metabase-Stack" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
+                                Acessar Repositório <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal 1 -->
     <div id="modal1" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
         <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
