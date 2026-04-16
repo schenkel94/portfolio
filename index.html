@@ -525,6 +525,37 @@
                     </div>
                 </div>
                 </div>
+
+                <!-- Case 5 -->
+                <div class="portfolio-slide">
+                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="assets/BaseClara.png"
+                             alt="Base Clara data quality SaaS"
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2 gap-3">
+                            <h3 class="text-xl font-bold text-white">Base Clara</h3>
+                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full whitespace-nowrap">SaaS</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 text-sm">
+                            Ferramenta gratuita para diagnosticar qualidade de arquivos antes da análise e do dashboard, 100% no navegador.
+                        </p>
+                        <div class="flex justify-between items-center gap-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Data Quality</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">CSV/XLSX</span>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Client-side</span>
+                            </div>
+                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center whitespace-nowrap" onclick="openModal('modalBaseClara')">
+                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
                 </div>
 
                 <button id="portfolioNext" class="hidden md:flex absolute right-0 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900/90 text-slate-300 transition hover:border-indigo-500/50 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="button" aria-label="Proximo projeto">
@@ -880,6 +911,97 @@
         </div>
     </div>
 
+    <!-- Base Clara Modal -->
+    <div id="modalBaseClara" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modalBaseClara')">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="p-8">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <div class="sticky top-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">Base Clara</h3>
+                            <p class="text-slate-400 mb-6">Projeto open source para diagnóstico rápido de qualidade de dados</p>
+
+                            <div class="mb-8">
+                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Carregamento de arquivos .csv, .xlsx e .xls direto no navegador.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Diagnóstico de qualidade com score, riscos de análise e prioridades de tratamento.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Exemplos práticos de tratamento em Python, Power Query e SQL.</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-slate-400">Exportação do diagnóstico para compartilhamento técnico.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-3">Categoria</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">SaaS</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Open Source</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Data Quality</span>
+                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">BI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2">
+                        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
+                            <img src="assets/BaseClara.png"
+                                 alt="Interface do Base Clara"
+                                 class="rounded-lg w-full">
+                        </div>
+
+                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
+                            <h4 class="text-lg font-bold text-white mb-3">Privacidade e Uso</h4>
+                            <p class="text-sm text-slate-400 mb-4">
+                                Sem backend e sem envio de arquivos para servidor: o processamento acontece localmente no navegador. O objetivo é reduzir retrabalho antes do dashboard e transformar problemas de dados em plano acionável.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">1. Acesse</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">2. Envie o arquivo</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">3. Veja o diagnóstico</span>
+                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">4. Trate os dados</span>
+                            </div>
+                            <a href="https://baseclara.netlify.app" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
+                                Acessar Produto Online <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-slate-900">
         <div class="container mx-auto px-6">
@@ -1072,28 +1194,43 @@
             return portfolioSlides[1].offsetLeft - portfolioSlides[0].offsetLeft;
         }
 
-        function renderPortfolioDots(maxScroll, step) {
-            const pageCount = Math.max(1, Math.ceil(maxScroll / Math.max(step, 1)) + 1);
+        function getPortfolioSnapPoints(maxScroll) {
+            const points = portfolioSlides.map(slide => {
+                const slideOffset = slide.offsetLeft - portfolioCarousel.offsetLeft;
+                return Math.max(0, Math.min(slideOffset, maxScroll));
+            });
 
-            if (portfolioDots.children.length === pageCount) {
+            return points.filter((point, index) => {
+                return index === 0 || Math.abs(point - points[index - 1]) > 2;
+            });
+        }
+
+        function renderPortfolioDots(snapPoints) {
+            const existingPoints = Array.from(portfolioDots.children).map(dot => Number(dot.dataset.scrollLeft));
+            const alreadyRendered = existingPoints.length === snapPoints.length && existingPoints.every((point, index) => {
+                return Math.abs(point - snapPoints[index]) <= 2;
+            });
+
+            if (alreadyRendered) {
                 return;
             }
 
             portfolioDots.innerHTML = '';
 
-            for (let index = 0; index < pageCount; index += 1) {
+            snapPoints.forEach((scrollLeft, index) => {
                 const dot = document.createElement('button');
                 dot.type = 'button';
                 dot.className = 'h-2.5 w-2.5 rounded-full bg-slate-700 transition-all hover:bg-indigo-400';
+                dot.dataset.scrollLeft = String(scrollLeft);
                 dot.setAttribute('aria-label', `Ir para o grupo de projetos ${index + 1}`);
                 dot.addEventListener('click', () => {
                     portfolioCarousel.scrollTo({
-                        left: Math.min(index * getPortfolioStep(), portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth),
+                        left: scrollLeft,
                         behavior: 'smooth'
                     });
                 });
                 portfolioDots.appendChild(dot);
-            }
+            });
         }
 
         function updatePortfolioCarousel() {
@@ -1103,11 +1240,14 @@
 
             const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
             const hasOverflow = maxScroll > 1;
-            const step = Math.max(getPortfolioStep(), 1);
-            const lastIndex = Math.max(0, Math.ceil(maxScroll / step));
-            const currentIndex = Math.min(Math.round(portfolioCarousel.scrollLeft / step), lastIndex);
+            const snapPoints = getPortfolioSnapPoints(maxScroll);
+            const currentIndex = snapPoints.reduce((closestIndex, point, index) => {
+                const currentDistance = Math.abs(portfolioCarousel.scrollLeft - point);
+                const closestDistance = Math.abs(portfolioCarousel.scrollLeft - snapPoints[closestIndex]);
+                return currentDistance < closestDistance ? index : closestIndex;
+            }, 0);
 
-            renderPortfolioDots(maxScroll, step);
+            renderPortfolioDots(snapPoints);
 
             portfolioPrev.hidden = !hasOverflow;
             portfolioNext.hidden = !hasOverflow;
