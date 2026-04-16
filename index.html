@@ -112,6 +112,33 @@
             justify-content: center;
             margin-bottom: 2rem;
         }
+
+        .portfolio-track {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-padding-left: 0.25rem;
+        }
+
+        .portfolio-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .portfolio-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-slide {
+                flex-basis: calc((100% - 2rem) / 2);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-slide {
+                flex-basis: calc((100% - 4rem) / 3);
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -183,7 +210,7 @@
                     <div class="relative">
                         <div class="absolute -inset-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur-lg opacity-20"></div>
                         <div class="relative bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden">
-                            <img src="https://schenkel94.github.io/portfolio/portfolio.png" 
+                            <img src="assets/portfolio.png"
                                  alt="Data Analysis" 
                                  class="w-full h-auto">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
@@ -207,7 +234,7 @@
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/3">
                     <div class="profile-container">
-                        <img src="https://schenkel94.github.io/portfolio/profile.JPG" alt="Mário Schenkel" class="profile-pic">
+                        <img src="assets/profile.JPG" alt="Mário Schenkel" class="profile-pic">
                     </div>
                 </div>
                 <div class="lg:w-2/3 mt-12 lg:mt-0">
@@ -369,11 +396,17 @@
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="relative">
+                <button id="portfolioPrev" class="hidden md:flex absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900/90 text-slate-300 transition hover:border-indigo-500/50 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="button" aria-label="Projeto anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div id="portfolioCarousel" class="portfolio-track flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth pb-4" aria-label="Projetos recentes">
                 <!-- Case 1 -->
-                <div class="card-hover bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
+                <div class="portfolio-slide">
+                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
                     <div class="relative overflow-hidden h-48">
-                        <img src="https://schenkel94.github.io/portfolio/VOC.png" 
+                        <img src="assets/VOC.png"
                              alt="Voice of Customer Dashboard" 
                              class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
@@ -398,11 +431,13 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 
                 <!-- Case 2 -->
-                <div class="card-hover bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
+                <div class="portfolio-slide">
+                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
                     <div class="relative overflow-hidden h-48">
-                        <img src="https://schenkel94.github.io/portfolio/churn.png" 
+                        <img src="assets/churn.png"
                              alt="Customer Churn Prediction" 
                              class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
@@ -427,11 +462,13 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 
                 <!-- Case 3 -->
-                <div class="card-hover bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
+                <div class="portfolio-slide">
+                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
                     <div class="relative overflow-hidden h-48">
-                        <img src="https://schenkel94.github.io/portfolio/dre-pdv.png" 
+                        <img src="assets/dre-pdv.png"
                              alt="Painel Financeiro B2B" 
                              class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
@@ -456,7 +493,15 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                </div>
+
+                <button id="portfolioNext" class="hidden md:flex absolute right-0 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900/90 text-slate-300 transition hover:border-indigo-500/50 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="button" aria-label="Proximo projeto">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
+            <div id="portfolioDots" class="mt-6 flex justify-center gap-3" aria-label="Navegacao dos projetos"></div>
             
             <div class="text-center mt-12">
                 <a href="https://github.com/schenkel94?tab=repositories" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium">
@@ -621,7 +666,7 @@
                     
                     <div class="md:w-1/2">
                         <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-                            <img src="https://schenkel94.github.io/portfolio/churn.png" 
+                            <img src="assets/churn.png"
                                  alt="Dashboard Preview" 
                                  class="rounded-lg w-full">
                         </div>
@@ -698,7 +743,7 @@
                     
                     <div class="md:w-1/2">
                         <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-                            <img src="https://schenkel94.github.io/portfolio/dre-pdv.png" 
+                            <img src="assets/dre-pdv.png"
                                  alt="Dashboard Preview" 
                                  class="rounded-lg w-full">
                         </div>
@@ -894,15 +939,107 @@
                 }
             });
         });
+
+        // Portfolio carousel
+        const portfolioCarousel = document.getElementById('portfolioCarousel');
+        const portfolioPrev = document.getElementById('portfolioPrev');
+        const portfolioNext = document.getElementById('portfolioNext');
+        const portfolioDots = document.getElementById('portfolioDots');
+        const portfolioSlides = Array.from(document.querySelectorAll('.portfolio-slide'));
+
+        function getPortfolioStep() {
+            if (portfolioSlides.length < 2) {
+                return portfolioCarousel ? portfolioCarousel.clientWidth : 0;
+            }
+
+            return portfolioSlides[1].offsetLeft - portfolioSlides[0].offsetLeft;
+        }
+
+        function renderPortfolioDots(maxScroll, step) {
+            const pageCount = Math.max(1, Math.ceil(maxScroll / Math.max(step, 1)) + 1);
+
+            if (portfolioDots.children.length === pageCount) {
+                return;
+            }
+
+            portfolioDots.innerHTML = '';
+
+            for (let index = 0; index < pageCount; index += 1) {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'h-2.5 w-2.5 rounded-full bg-slate-700 transition-all hover:bg-indigo-400';
+                dot.setAttribute('aria-label', `Ir para o grupo de projetos ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    portfolioCarousel.scrollTo({
+                        left: Math.min(index * getPortfolioStep(), portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth),
+                        behavior: 'smooth'
+                    });
+                });
+                portfolioDots.appendChild(dot);
+            }
+        }
+
+        function updatePortfolioCarousel() {
+            if (!portfolioCarousel || !portfolioPrev || !portfolioNext || !portfolioDots || !portfolioSlides.length) {
+                return;
+            }
+
+            const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
+            const hasOverflow = maxScroll > 1;
+            const step = Math.max(getPortfolioStep(), 1);
+            const lastIndex = Math.max(0, Math.ceil(maxScroll / step));
+            const currentIndex = Math.min(Math.round(portfolioCarousel.scrollLeft / step), lastIndex);
+
+            renderPortfolioDots(maxScroll, step);
+
+            portfolioPrev.hidden = !hasOverflow;
+            portfolioNext.hidden = !hasOverflow;
+            portfolioDots.style.display = hasOverflow ? 'flex' : 'none';
+
+            portfolioPrev.disabled = portfolioCarousel.scrollLeft <= 1;
+            portfolioNext.disabled = portfolioCarousel.scrollLeft >= maxScroll - 1;
+            portfolioPrev.classList.toggle('opacity-40', portfolioPrev.disabled);
+            portfolioNext.classList.toggle('opacity-40', portfolioNext.disabled);
+            portfolioPrev.classList.toggle('cursor-not-allowed', portfolioPrev.disabled);
+            portfolioNext.classList.toggle('cursor-not-allowed', portfolioNext.disabled);
+
+            portfolioDots.querySelectorAll('button').forEach((dot, index) => {
+                const isActive = index === currentIndex;
+                dot.classList.toggle('bg-indigo-400', isActive);
+                dot.classList.toggle('bg-slate-700', !isActive);
+                dot.classList.toggle('w-6', isActive);
+                dot.classList.toggle('w-2.5', !isActive);
+                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        }
+
+        if (portfolioCarousel && portfolioPrev && portfolioNext && portfolioDots) {
+            portfolioPrev.addEventListener('click', () => {
+                portfolioCarousel.scrollBy({ left: -getPortfolioStep(), behavior: 'smooth' });
+            });
+
+            portfolioNext.addEventListener('click', () => {
+                portfolioCarousel.scrollBy({ left: getPortfolioStep(), behavior: 'smooth' });
+            });
+
+            portfolioCarousel.addEventListener('scroll', updatePortfolioCarousel);
+            window.addEventListener('resize', updatePortfolioCarousel);
+            updatePortfolioCarousel();
+        }
         
         // Form submission
         
         
         // Close success modal
-        document.getElementById('closeSuccessModal').addEventListener('click', function() {
-            document.getElementById('successModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        });
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const successModal = document.getElementById('successModal');
+
+        if (closeSuccessModal && successModal) {
+            closeSuccessModal.addEventListener('click', function() {
+                successModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        }
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
