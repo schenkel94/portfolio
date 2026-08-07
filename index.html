@@ -1,1343 +1,1149 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mário Schenkel | Business Data Analyst</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-        }
-        
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--darker);
-            color: var(--light);
-            scroll-behavior: smooth;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active::after {
-            width: 100%;
-        }
-        
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-        
-        .skill-pill {
-            transition: all 0.2s ease;
-        }
-        
-        .skill-pill:hover {
-            transform: scale(1.05);
-        }
-        
-        .form-input {
-            background-color: #1e293b;
-            border: 1px solid #334155;
-            color: #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
-        }
-        
-        .modal-overlay {
-            background-color: rgba(2, 6, 23, 0.95);
-        }
-        
-        .hero-pattern {
-            background-image: radial-gradient(circle at 25% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-        }
-        
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #6366f1;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S³ Labs — Consultoria em Dados & Business Analytics | Mário Schenkel</title>
 
-        .portfolio-track {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            scroll-padding-left: 0.25rem;
-        }
+<meta name="description" content="S³ Labs é a consultoria independente de dados de Mário Schenkel: analytics engineering, dashboards, pipelines e IA aplicada para transformar dados dispersos em decisões defensáveis.">
+<meta name="author" content="Mário Schenkel">
+<meta name="theme-color" content="#0A0C10">
+<meta name="keywords" content="consultoria de dados, analytics engineering, business intelligence, Power BI, dbt, Metabase, Databricks, engenharia de dados, data analytics, Mário Schenkel, S3 Labs">
+<link rel="canonical" href="https://schenkel94.github.io/portfolio/">
 
-        .portfolio-track::-webkit-scrollbar {
-            display: none;
-        }
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S³ Labs">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="S³ Labs — Engineering better decisions.">
+<meta property="og:description" content="Consultoria independente em Dados & Business Analytics. Analytics engineering, dashboards, pipelines e IA aplicada ao negócio.">
+<meta property="og:url" content="https://schenkel94.github.io/portfolio/">
+<meta property="og:image" content="https://schenkel94.github.io/portfolio/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="S³ Labs — Engineering better decisions.">
+<meta name="twitter:description" content="Consultoria independente em Dados & Business Analytics por Mário Schenkel.">
+<meta name="twitter:image" content="https://schenkel94.github.io/portfolio/assets/img/og-cover.png">
 
-        .portfolio-slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-        }
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-        @media (min-width: 768px) {
-            .portfolio-slide {
-                flex-basis: calc((100% - 2rem) / 2);
-            }
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
 
-        @media (min-width: 1024px) {
-            .portfolio-slide {
-                flex-basis: calc((100% - 4rem) / 3);
-            }
-        }
-    </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://schenkel94.github.io/portfolio/#org",
+      "name": "S³ Labs",
+      "alternateName": "S3 Labs",
+      "slogan": "Engineering better decisions.",
+      "description": "Consultoria independente em Dados e Business Analytics: analytics engineering, business intelligence, pipelines de dados e IA aplicada ao negócio.",
+      "url": "https://schenkel94.github.io/portfolio/",
+      "logo": "https://schenkel94.github.io/portfolio/assets/img/logo-s3.png",
+      "founder": { "@id": "https://schenkel94.github.io/portfolio/#mario" },
+      "areaServed": "BR",
+      "availableLanguage": ["pt-BR", "en"],
+      "address": { "@type": "PostalAddress", "addressRegion": "RS", "addressCountry": "BR" },
+      "knowsAbout": ["Analytics Engineering", "Business Intelligence", "dbt", "Power BI", "Metabase", "SQL", "Python", "Databricks", "Data Quality", "FP&A"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://schenkel94.github.io/portfolio/#mario",
+      "name": "Mário Schenkel",
+      "jobTitle": "Founder & Senior Data Consultant",
+      "worksFor": { "@id": "https://schenkel94.github.io/portfolio/#org" },
+      "url": "https://schenkel94.github.io/portfolio/",
+      "image": "https://schenkel94.github.io/portfolio/assets/img/mario-avatar-512.png",
+      "sameAs": ["https://www.linkedin.com/in/marioschenkel", "https://github.com/schenkel94"],
+      "alumniOf": ["Universidade do Vale do Rio dos Sinos (Unisinos)", "FAMESP"]
+    }
+  ]
+}
+</script>
 </head>
-<body class="antialiased">
-    <!-- Floating Navbar -->
-    <header class="fixed w-full z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center backdrop-blur-md bg-slate-900/80 rounded-full px-6 py-3 border border-slate-800 shadow-lg">
-                <a href="#home" class="text-xl font-bold">
-                    <span class="gradient-text">Mário Schenkel</span>
-                </a>
-                <nav class="hidden md:block">
-                    <ul class="flex space-x-8">
-                        <li><a href="#home" class="nav-link text-slate-300 hover:text-white">Home</a></li>
-                        <li><a href="#about" class="nav-link text-slate-300 hover:text-white">Sobre</a></li>
-                        <li><a href="#portfolio" class="nav-link text-slate-300 hover:text-white">Portfólio</a></li>
-                        <li><a href="#contact" class="nav-link text-slate-300 hover:text-white">Contato</a></li>
-                    </ul>
-                </nav>
-                <button class="md:hidden text-slate-300 focus:outline-none" id="menuToggle">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
+
+<body>
+
+<!-- ============================================================ CHROME -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="brand" aria-label="S³ Labs — início">
+      <img src="assets/img/logo-mark.png" alt="" class="brand__mark" width="30" height="30">
+      <span>
+        <span class="brand__word">S<sup>3</sup> LABS</span>
+        <span class="brand__sub">Data &amp; Analytics</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navegação principal">
+      <a href="#servicos" class="nav__link">Serviços</a>
+      <a href="#metodo" class="nav__link">Método</a>
+      <a href="#cases" class="nav__link">Cases</a>
+      <a href="#fundador" class="nav__link">Fundador</a>
+      <a href="#stack" class="nav__link">Stack</a>
+      <a href="#faq" class="nav__link">FAQ</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a href="#contato" class="btn btn--primary btn--sm">
+        Iniciar um projeto
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-menu__list">
+    <li><a href="#servicos" class="mobile-menu__link" style="animation-delay:.05s"><i>01</i> Serviços</a></li>
+    <li><a href="#metodo"   class="mobile-menu__link" style="animation-delay:.10s"><i>02</i> Método</a></li>
+    <li><a href="#cases"    class="mobile-menu__link" style="animation-delay:.15s"><i>03</i> Cases</a></li>
+    <li><a href="#fundador" class="mobile-menu__link" style="animation-delay:.20s"><i>04</i> Fundador</a></li>
+    <li><a href="#stack"    class="mobile-menu__link" style="animation-delay:.25s"><i>05</i> Stack</a></li>
+    <li><a href="#faq"      class="mobile-menu__link" style="animation-delay:.30s"><i>06</i> FAQ</a></li>
+  </ul>
+  <div class="mobile-menu__foot">
+    <a href="#contato" class="btn btn--primary btn--sm">Iniciar um projeto</a>
+    <a href="https://www.linkedin.com/in/marioschenkel" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">LinkedIn</a>
+  </div>
+</div>
+
+<!-- ============================================================== HERO -->
+<main id="top">
+<section class="hero">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+  <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+  <div class="hero__glow hero__glow--3" aria-hidden="true"></div>
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero__inner">
+    <div>
+      <span class="status-pill" data-reveal><span class="status-dot"></span> Disponível para novos projetos</span>
+
+      <h1 class="h-display hero__title">
+        <span class="line" data-line style="--d:120ms"><span>Dados que</span></span>
+        <span class="line" data-line style="--d:220ms"><span>sustentam</span></span>
+        <span class="line" data-line style="--d:320ms"><span class="acid">decisões.</span></span>
+      </h1>
+
+      <p class="hero__kicker" data-reveal style="--d:420ms">
+        <strong>S³ LABS</strong> — consultoria independente em Dados &amp; Business Analytics.<br>
+        Engineering better decisions.
+      </p>
+
+      <p class="lead" data-reveal style="--d:500ms" id="heroLead">
+        Conecto o negócio à engenharia de dados: modelagem confiável, dashboards que
+        respondem perguntas reais e automação que devolve tempo ao seu time.
+      </p>
+
+      <div class="hero__actions" data-reveal style="--d:580ms">
+        <a href="#contato" class="btn btn--primary">
+          Iniciar um projeto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#cases" class="btn btn--ghost">
+          Ver cases
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </a>
+      </div>
+
+      <div class="hero__facts" data-reveal style="--d:660ms">
+        <div class="fact"><span class="fact__v" data-count="8" data-suffix="+">0</span><span class="fact__k">Anos em dados &amp; negócios</span></div>
+        <div class="fact"><span class="fact__v" data-count="4">0</span><span class="fact__k">Setores atendidos</span></div>
+        <div class="fact"><span class="fact__v" data-count="24" data-suffix="h">0</span><span class="fact__k">SLA de resposta</span></div>
+      </div>
+    </div>
+
+    <!-- retrato do fundador — sobe suave ao rolar -->
+    <div class="portrait" data-reveal="scale" style="--d:300ms">
+      <div class="portrait__frame">
+        <span class="portrait__tag">Founder &amp; Senior Consultant</span>
+        <img src="assets/img/mario-cutout.webp" alt="Mário Schenkel, fundador da S³ Labs"
+             class="portrait__img" id="portraitImg" width="900" height="1038" fetchpriority="high">
+      </div>
+
+      <!-- fora do frame: o frame recorta, e estes cartões precisam vazar a borda -->
+      <div class="portrait__card portrait__card--tl">
+        <span class="k">Pipeline</span>
+        <span class="v"><span class="status-dot"></span> Em produção</span>
+      </div>
+
+      <div class="portrait__card portrait__card--br">
+        <span class="k">Decisões / mês</span>
+        <span class="v">
+          <svg class="spark" viewBox="0 0 74 22" aria-hidden="true">
+            <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#C8F32C" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="#C8F32C" stop-opacity="0"/>
+            </linearGradient></defs>
+            <path class="area" d="M1,18 L12,15 L23,16 L34,10 L45,12 L56,6 L67,3 L73,4 L73,22 L1,22 Z"/>
+            <path d="M1,18 L12,15 L23,16 L34,10 L45,12 L56,6 L67,3 L73,4"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__cue" aria-hidden="true"><i></i> Role</div>
+</section>
+
+<!-- =========================================================== MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="marqueeTrack">
+    <span class="marquee__item">SQL Avançado</span>
+    <span class="marquee__item">dbt</span>
+    <span class="marquee__item">Power BI · DAX</span>
+    <span class="marquee__item">Python</span>
+    <span class="marquee__item">Databricks</span>
+    <span class="marquee__item">Metabase</span>
+    <span class="marquee__item">Snowflake</span>
+    <span class="marquee__item">Tableau</span>
+    <span class="marquee__item">Apache Spark</span>
+    <span class="marquee__item">DuckDB</span>
+    <span class="marquee__item">Azure DevOps</span>
+    <span class="marquee__item">Looker Studio</span>
+    <span class="marquee__item">IA Generativa</span>
+    <span class="marquee__item">Data Quality</span>
+    <span class="marquee__item">FP&amp;A</span>
+  </div>
+</div>
+
+<!-- ============================================================ STATS -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="stats" data-reveal>
+      <div class="stat">
+        <span class="stat__v"><span data-count="8">0</span><span class="u">+</span></span>
+        <span class="stat__k">Anos de experiência</span>
+        <span class="stat__d">Controladoria, FP&amp;A e Dados — de 2018 a hoje.</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v"><span data-count="4">0</span></span>
+        <span class="stat__k">Setores</span>
+        <span class="stat__d">Banco, SaaS, meios de pagamento e educação.</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v"><span data-count="5">0</span></span>
+        <span class="stat__k">Cases públicos</span>
+        <span class="stat__d">Projetos abertos, com código e demo navegável.</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v"><span data-count="100">0</span><span class="u">%</span></span>
+        <span class="stat__k">Remoto</span>
+        <span class="stat__d">Atendimento em todo o Brasil, em português ou inglês.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= SERVIÇOS -->
+<section class="section" id="servicos">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <div class="sec-head__top">
+          <span class="sec-num">01</span>
+          <span class="eyebrow">O que a S³ Labs entrega</span>
         </div>
+        <h2 class="h1" data-reveal>Serviços desenhados para<br><span class="outline-text">decisão</span>, não para relatório.</h2>
+      </div>
+      <p class="lead small" data-reveal style="--d:120ms">
+        Cada frente começa pela pergunta de negócio e termina em algo operando:
+        um modelo versionado, um painel em produção, um processo que roda sozinho.
+      </p>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="md:hidden fixed inset-0 z-40 bg-slate-900/95 backdrop-blur-lg flex items-center justify-center hidden" id="mobileMenu">
-        <div class="text-center">
-            <ul class="space-y-8">
-                <li><a href="#home" class="text-2xl font-medium text-slate-300 hover:text-white block py-2">Home</a></li>
-                <li><a href="#about" class="text-2xl font-medium text-slate-300 hover:text-white block py-2">Sobre</a></li>
-                <li><a href="#portfolio" class="text-2xl font-medium text-slate-300 hover:text-white block py-2">Portfólio</a></li>
-                <li><a href="#contact" class="text-2xl font-medium text-slate-300 hover:text-white block py-2">Contato</a></li>
+    <div class="grid-3">
+      <article class="card svc" data-reveal data-spotlight style="--d:0ms">
+        <span class="card__num">01</span>
+        <div class="card__head">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6a9 3 0 0 0 18 0 9 3 0 0 0-18 0M3 6v12a9 3 0 0 0 18 0V6M3 12a9 3 0 0 0 18 0"/></svg></span>
+          <h3 class="h3">Analytics Engineering</h3>
+        </div>
+        <p class="card__body">Transformo dados crus em modelos confiáveis, testados e documentados — a base que todo dashboard honesto exige.</p>
+        <ul class="card__list">
+          <li>Modelagem dimensional e camadas (staging → marts)</li>
+          <li>dbt com testes, lineage e documentação</li>
+          <li>Versionamento em Git e revisão de código</li>
+        </ul>
+        <div class="card__tags"><span class="tag">dbt</span><span class="tag">SQL</span><span class="tag">DuckDB</span></div>
+      </article>
+
+      <article class="card svc" data-reveal data-spotlight style="--d:80ms">
+        <span class="card__num">02</span>
+        <div class="card__head">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 16v-5M12 16V8M17 16v-8"/></svg></span>
+          <h3 class="h3">BI &amp; Dashboards</h3>
+        </div>
+        <p class="card__body">Painéis que respondem perguntas e cabem na rotina de quem decide — sem poluição visual e sem métrica órfã.</p>
+        <ul class="card__list">
+          <li>Power BI (DAX), Metabase, Tableau e Looker Studio</li>
+          <li>Definição de KPIs e dicionário de métricas</li>
+          <li>Storytelling e design de leitura</li>
+        </ul>
+        <div class="card__tags"><span class="tag">Power BI</span><span class="tag">Metabase</span><span class="tag">DAX</span></div>
+      </article>
+
+      <article class="card svc" data-reveal data-spotlight style="--d:160ms">
+        <span class="card__num">03</span>
+        <div class="card__head">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M5 12H2M22 12h-3M7.8 7.8 5.6 5.6M18.4 5.6l-2.2 2.2M7.8 16.2l-2.2 2.2M18.4 18.4l-2.2-2.2"/><circle cx="12" cy="12" r="4"/></svg></span>
+          <h3 class="h3">Plataforma &amp; Pipelines</h3>
+        </div>
+        <p class="card__body">Integração e automação de ponta a ponta: o dado chega no lugar certo, na hora certa, sem alguém apertando botão.</p>
+        <ul class="card__list">
+          <li>ETL/ELT e orquestração de cargas</li>
+          <li>Databricks, Snowflake e Spark</li>
+          <li>Automação de relatórios recorrentes</li>
+        </ul>
+        <div class="card__tags"><span class="tag">Databricks</span><span class="tag">Spark</span><span class="tag">Python</span></div>
+      </article>
+
+      <article class="card svc" data-reveal data-spotlight style="--d:0ms">
+        <span class="card__num">04</span>
+        <div class="card__head">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c-1.7.7-3 2.4-3 4.4 0 1.4.6 2.6 1.6 3.5C6.2 15.6 6 16.3 6 17a3 3 0 0 0 6 0V3zM12 3a4 4 0 0 1 4 4c1.7.7 3 2.4 3 4.4 0 1.4-.6 2.6-1.6 3.5.4.7.6 1.4.6 2.1a3 3 0 0 1-6 0"/></svg></span>
+          <h3 class="h3">Analytics com IA</h3>
+        </div>
+        <p class="card__body">IA aplicada onde ela paga a conta: classificar, prever e resumir volumes que nenhum time daria conta de ler à mão.</p>
+        <ul class="card__list">
+          <li>NLP e classificação de feedbacks (Voice of Customer)</li>
+          <li>Modelos preditivos — churn, propensão, risco</li>
+          <li>IA generativa integrada ao fluxo analítico</li>
+        </ul>
+        <div class="card__tags"><span class="tag">NLP</span><span class="tag">GenAI</span><span class="tag">Scikit-learn</span></div>
+      </article>
+
+      <article class="card svc" data-reveal data-spotlight style="--d:80ms">
+        <span class="card__num">05</span>
+        <div class="card__head">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          <h3 class="h3">FP&amp;A &amp; Analytics Financeiro</h3>
+        </div>
+        <p class="card__body">O diferencial da casa: dez anos de controladoria por trás da análise. Falo a língua do CFO e a do engenheiro.</p>
+        <ul class="card__list">
+          <li>DRE gerencial, rentabilidade e ponto de equilíbrio</li>
+          <li>Pricing e revenue management</li>
+          <li>Orçamento, forecast e análise de desvios</li>
+        </ul>
+        <div class="card__tags"><span class="tag">DRE</span><span class="tag">Pricing</span><span class="tag">Forecast</span></div>
+      </article>
+
+      <article class="card svc" data-reveal data-spotlight style="--d:160ms">
+        <span class="card__num">06</span>
+        <div class="card__head">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>
+          <h3 class="h3">Diagnóstico &amp; Capacitação</h3>
+        </div>
+        <p class="card__body">Antes de construir, medir. Auditoria da base atual e treinamento para o time seguir sozinho depois da entrega.</p>
+        <ul class="card__list">
+          <li>Auditoria de qualidade e consistência de dados</li>
+          <li>Governança, documentação e dicionário</li>
+          <li>Treinamento e mentoria de times</li>
+        </ul>
+        <div class="card__tags"><span class="tag">Data Quality</span><span class="tag">Governança</span><span class="tag">Mentoria</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== MÉTODO -->
+<section class="section" id="metodo">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <div class="sec-head__top">
+          <span class="sec-num">02</span>
+          <span class="eyebrow">Como o trabalho acontece</span>
+        </div>
+        <h2 class="h1" data-reveal>Um método curto,<br>com <span class="acid">entregável em cada etapa</span>.</h2>
+      </div>
+      <p class="lead small" data-reveal style="--d:120ms">
+        Nada de projeto de seis meses sem nada na mão. Cada fase fecha com um artefato
+        que você usa mesmo se o projeto parar ali.
+      </p>
+    </header>
+
+    <div class="method" id="method">
+      <div class="method__rail" aria-hidden="true"><i id="methodRail"></i></div>
+
+      <article class="step" data-step data-reveal style="--d:0ms">
+        <span class="step__dot">01</span>
+        <h3>Diagnóstico</h3>
+        <p>Começo pela decisão que precisa ser tomada — não pela ferramenta. Mapeio fontes, processos, donos e o que já existe.</p>
+        <span class="step__out">Entrega: <b>diagnóstico + escopo fechado</b></span>
+      </article>
+
+      <article class="step" data-step data-reveal style="--d:100ms">
+        <span class="step__dot">02</span>
+        <h3>Arquitetura &amp; Modelagem</h3>
+        <p>Desenho as camadas e o modelo de dados, com testes automatizados e documentação nascendo junto do código.</p>
+        <span class="step__out">Entrega: <b>modelo versionado em dbt/SQL</b></span>
+      </article>
+
+      <article class="step" data-step data-reveal style="--d:200ms">
+        <span class="step__dot">03</span>
+        <h3>Visualização &amp; Entrega</h3>
+        <p>Construo o painel ou a automação sobre o modelo pronto, validando número por número com quem vai usar.</p>
+        <span class="step__out">Entrega: <b>dashboard em produção</b></span>
+      </article>
+
+      <article class="step" data-step data-reveal style="--d:300ms">
+        <span class="step__dot">04</span>
+        <h3>Autonomia &amp; Handover</h3>
+        <p>Documentação, treinamento e transferência de conhecimento. O objetivo é o seu time não depender de mim.</p>
+        <span class="step__out">Entrega: <b>time autônomo + documentação</b></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CASES -->
+<section class="section" id="cases">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <div class="sec-head__top">
+          <span class="sec-num">03</span>
+          <span class="eyebrow">Projetos em destaque</span>
+        </div>
+        <h2 class="h1" data-reveal>Cases com código<br>aberto e demo navegável.</h2>
+      </div>
+      <p class="lead small" data-reveal style="--d:120ms">
+        Projetos construídos com dados demonstrativos para mostrar método e execução
+        de ponta a ponta — do dado cru à decisão. Cada um tem repositório público.
+      </p>
+    </header>
+
+    <div class="filters" data-reveal role="tablist" aria-label="Filtrar cases">
+      <button class="filter is-on" data-filter="all" role="tab" aria-selected="true">Todos</button>
+      <button class="filter" data-filter="ae" role="tab" aria-selected="false">Analytics Eng.</button>
+      <button class="filter" data-filter="bi" role="tab" aria-selected="false">BI &amp; Dashboards</button>
+      <button class="filter" data-filter="ia" role="tab" aria-selected="false">IA &amp; ML</button>
+      <button class="filter" data-filter="fin" role="tab" aria-selected="false">Financeiro</button>
+      <button class="filter" data-filter="prod" role="tab" aria-selected="false">Produto</button>
+    </div>
+
+    <div class="cases">
+      <!-- CASE 1 -->
+      <article class="case case--wide" data-cat="ae bi" data-reveal style="--d:0ms">
+        <div class="case__media">
+          <span class="case__badge tag tag--acid">Analytics Engineering</span>
+          <img src="assets/cases/dashboard-produtos.png" alt="Dashboard executivo de e-commerce construído em Metabase" loading="lazy">
+        </div>
+        <div class="case__body">
+          <div class="case__title">
+            <h3 class="h2">Stack dbt + Metabase</h3>
+          </div>
+          <p class="case__desc">Pipeline analítico completo, do dado cru ao dashboard executivo: modelagem em dbt sobre DuckDB, testes automatizados e visualização em Metabase.</p>
+          <div class="case__metrics">
+            <div class="case__metric"><span class="v">4</span><span class="k">Camadas modeladas</span></div>
+            <div class="case__metric"><span class="v">100%</span><span class="k">Modelos testados</span></div>
+            <div class="case__metric"><span class="v">Open</span><span class="k">Source</span></div>
+          </div>
+          <div class="card__tags"><span class="tag">dbt</span><span class="tag">DuckDB</span><span class="tag">Metabase</span><span class="tag">SQL</span></div>
+          <div class="case__foot">
+            <button class="link-arrow" data-modal="m-dbt">Ver o case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="https://github.com/schenkel94/DBT-Metabase-Stack" target="_blank" rel="noopener" class="tag">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 2 -->
+      <article class="case case--wide" data-cat="ia bi" data-reveal style="--d:80ms">
+        <div class="case__media">
+          <span class="case__badge tag tag--copper">IA &amp; NLP</span>
+          <img src="assets/cases/VOC.png" alt="Dashboard de Voice of Customer com análise de sentimento" loading="lazy">
+        </div>
+        <div class="case__body">
+          <div class="case__title">
+            <h3 class="h2">Voice of Customer</h3>
+          </div>
+          <p class="case__desc">Classificação automática de feedbacks com NLP e GPT para extrair sentimento e tópicos, substituindo a leitura manual de milhares de comentários.</p>
+          <div class="case__metrics">
+            <div class="case__metric"><span class="v">−90%</span><span class="k">Tempo de análise</span></div>
+            <div class="case__metric"><span class="v">Auto</span><span class="k">Classificação</span></div>
+            <div class="case__metric"><span class="v">Live</span><span class="k">Demo Power BI</span></div>
+          </div>
+          <div class="card__tags"><span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Databricks</span></div>
+          <div class="case__foot">
+            <button class="link-arrow" data-modal="m-voc">Ver o case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="https://github.com/schenkel94/VoC" target="_blank" rel="noopener" class="tag">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 3 -->
+      <article class="case" data-cat="ia" data-reveal style="--d:0ms">
+        <div class="case__media">
+          <span class="case__badge tag tag--copper">Machine Learning</span>
+          <img src="assets/cases/churn.png" alt="Painel de predição de churn de clientes" loading="lazy">
+        </div>
+        <div class="case__body">
+          <div class="case__title"><h3 class="h2">Churn Prediction</h3></div>
+          <p class="case__desc">Modelo preditivo de evasão que ranqueia clientes por risco e aponta o motivo, direcionando a ação de retenção.</p>
+          <div class="case__metrics">
+            <div class="case__metric"><span class="v">−18%</span><span class="k">Evasão potencial</span></div>
+            <div class="case__metric"><span class="v">Spark</span><span class="k">Em escala</span></div>
+          </div>
+          <div class="card__tags"><span class="tag">Python</span><span class="tag">Spark</span><span class="tag">Plotly</span></div>
+          <div class="case__foot">
+            <button class="link-arrow" data-modal="m-churn">Ver o case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="https://github.com/schenkel94/churn" target="_blank" rel="noopener" class="tag">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 4 -->
+      <article class="case" data-cat="fin bi" data-reveal style="--d:80ms">
+        <div class="case__media">
+          <span class="case__badge tag tag--steel">Financeiro</span>
+          <img src="assets/cases/dre-pdv.png" alt="Análise de DRE por ponto de venda" loading="lazy">
+        </div>
+        <div class="case__body">
+          <div class="case__title"><h3 class="h2">DRE por PDV</h3></div>
+          <p class="case__desc">Análise autônoma de ofensores da DRE por ponto de venda, com plano de ação sugerido para cada unidade.</p>
+          <div class="case__metrics">
+            <div class="case__metric"><span class="v">Auto</span><span class="k">Diagnóstico</span></div>
+            <div class="case__metric"><span class="v">PDV</span><span class="k">Granularidade</span></div>
+          </div>
+          <div class="card__tags"><span class="tag">Python</span><span class="tag">Plotly</span><span class="tag">ETL</span></div>
+          <div class="case__foot">
+            <button class="link-arrow" data-modal="m-dre">Ver o case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV" target="_blank" rel="noopener" class="tag">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 5 -->
+      <article class="case" data-cat="prod ae" data-reveal style="--d:160ms">
+        <div class="case__media">
+          <span class="case__badge tag tag--acid">Produto · SaaS</span>
+          <img src="assets/cases/BaseClara.png" alt="Base Clara, ferramenta de diagnóstico de qualidade de dados" loading="lazy">
+        </div>
+        <div class="case__body">
+          <div class="case__title"><h3 class="h2">Base Clara</h3></div>
+          <p class="case__desc">Ferramenta gratuita que diagnostica a qualidade de um CSV/XLSX antes da análise — 100% no navegador, sem upload de dados.</p>
+          <div class="case__metrics">
+            <div class="case__metric"><span class="v">0</span><span class="k">Dados enviados</span></div>
+            <div class="case__metric"><span class="v">Free</span><span class="k">Para usar</span></div>
+          </div>
+          <div class="card__tags"><span class="tag">Data Quality</span><span class="tag">Client-side</span><span class="tag">CSV/XLSX</span></div>
+          <div class="case__foot">
+            <button class="link-arrow" data-modal="m-clara">Ver o case <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="https://baseclara.netlify.app" target="_blank" rel="noopener" class="tag">Abrir ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem" data-reveal>
+      <a href="https://github.com/schenkel94?tab=repositories" target="_blank" rel="noopener" class="btn btn--ghost">
+        Todos os repositórios no GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M17 7H9M17 7v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= FUNDADOR -->
+<section class="section" id="fundador">
+  <div class="wrap">
+    <header class="sec-head">
+      <div class="sec-head__top">
+        <span class="sec-num">04</span>
+        <span class="eyebrow">Quem conduz os projetos</span>
+      </div>
+      <h2 class="h1" data-reveal>Mário Schenkel,<br><span class="outline-text">fundador</span> da S³ Labs.</h2>
+    </header>
+
+    <div class="founder">
+      <aside class="founder__card" data-reveal="left">
+        <div class="founder__photo">
+          <img src="assets/img/mario-cutout.webp" alt="Mário Schenkel" loading="lazy" width="900" height="1038">
+        </div>
+        <div class="founder__meta">
+          <div class="founder__row"><span class="k">Função</span><span class="v">Founder &amp; Senior Consultant</span></div>
+          <div class="founder__row"><span class="k">Base</span><span class="v">Rio Grande do Sul · BR</span></div>
+          <div class="founder__row"><span class="k">Formação</span><span class="v">Administração + MBA em Banco de Dados</span></div>
+          <div class="founder__row"><span class="k">Idiomas</span><span class="v">Português · Inglês</span></div>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <a href="https://www.linkedin.com/in/marioschenkel" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">LinkedIn ↗</a>
+          <a href="https://github.com/schenkel94" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">GitHub ↗</a>
+        </div>
+      </aside>
+
+      <div>
+        <div class="prose" data-reveal="right">
+          <p>
+            Comecei minha carreira dentro do negócio, não dentro do banco de dados. Foram anos em
+            <strong>controladoria, FP&amp;A, pricing e revenue management</strong> — o lado em que alguém
+            precisa olhar um número e decidir o que fazer com ele na segunda-feira.
+          </p>
+          <p>
+            Esse caminho me deixou com uma obsessão: quase nenhum problema de dados é técnico no começo.
+            É <strong>pergunta mal formulada, métrica sem dono e base que ninguém auditou</strong>. Por isso migrei
+            para engenharia e análise de dados — para resolver o problema na raiz, e não maquiar o sintoma
+            num gráfico bonito.
+          </p>
+          <p>
+            Hoje a <strong>S³ Labs</strong> é a estrutura pela qual eu presto consultoria de forma independente,
+            atuando no cruzamento entre negócio e engenharia. Atendo do diagnóstico à entrega, com um
+            compromisso simples: <strong>o time do cliente termina o projeto mais autônomo do que começou.</strong>
+          </p>
+          <p class="quote">"Dado que ninguém confia não é ativo, é passivo. Meu trabalho é virar essa conta."</p>
+        </div>
+
+        <h3 class="h2" style="margin-top:2.75rem" data-reveal>Trajetória</h3>
+        <div class="timeline">
+          <article class="tl" data-reveal style="--d:0ms">
+            <span class="tl__when">Mar 2025 — Fev 2026</span>
+            <div class="tl__what">
+              <span class="tl__role">Data Analyst</span>
+              <span class="tl__org">Paraná Banco S/A</span>
+              <p class="tl__desc">Tradução de necessidades das áreas de negócio em modelagens e dashboards de performance de jornadas de marketing, atuando como interface direta com stakeholders.</p>
+            </div>
+          </article>
+          <article class="tl" data-reveal style="--d:60ms">
+            <span class="tl__when">Jun 2023 — Jan 2025</span>
+            <div class="tl__what">
+              <span class="tl__role">Data Analyst &amp; Senior Controllership Analyst</span>
+              <span class="tl__org">Zenvia</span>
+              <p class="tl__desc">Projetos de dados com integração de IA e construção de dashboards em Metabase e Tableau para análises financeiras em uma operação SaaS de capital aberto.</p>
+            </div>
+          </article>
+          <article class="tl" data-reveal style="--d:120ms">
+            <span class="tl__when">Ago 2022 — Jun 2023</span>
+            <div class="tl__what">
+              <span class="tl__role">Controller Data Analyst</span>
+              <span class="tl__org">Saque e Pague</span>
+              <p class="tl__desc">Desenvolvimento e automação de relatórios e pipelines em Power BI e SQL, sustentando as métricas estratégicas do negócio de meios de pagamento.</p>
+            </div>
+          </article>
+          <article class="tl" data-reveal style="--d:180ms">
+            <span class="tl__when">Jun 2018 — Ago 2022</span>
+            <div class="tl__what">
+              <span class="tl__role">Controllership Specialist</span>
+              <span class="tl__org">Universidade Feevale</span>
+              <p class="tl__desc">Integridade e confiabilidade das informações financeiras e suporte à gestão em projetos de controladoria — onde a régua de "número confiável" foi calibrada.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top:2.5rem">
+          <div class="card" data-reveal data-spotlight>
+            <div class="card__head">
+              <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></span>
+              <h3 class="h3">Formação &amp; Certificações</h3>
+            </div>
+            <ul class="card__list">
+              <li>Administração de Empresas — Unisinos (2015–2020)</li>
+              <li>MBA em Administração de Banco de Dados — FAMESP (2022–2023)</li>
+              <li>Power BI para Business Intelligence e Data Science</li>
+              <li>Fundamentos de Python para Análise de Dados</li>
             </ul>
-            <button class="mt-12 text-slate-300 hover:text-white" id="closeMobileMenu">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
+          </div>
+
+          <div class="card" data-reveal data-spotlight style="--d:80ms">
+            <div class="card__head">
+              <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20v-4M18 20v-9"/><circle cx="12" cy="8" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="6" cy="12" r="2"/></svg></span>
+              <h3 class="h3">Onde eu sou mais forte</h3>
+            </div>
+            <div class="meters" data-meters>
+              <div class="meter" style="--v:.95"><div class="meter__top"><span class="n">SQL &amp; Modelagem</span><span class="p">Especialista</span></div><div class="meter__rail"><i class="meter__fill"></i></div></div>
+              <div class="meter" style="--v:.92"><div class="meter__top"><span class="n">Power BI &amp; DAX</span><span class="p">Especialista</span></div><div class="meter__rail"><i class="meter__fill"></i></div></div>
+              <div class="meter" style="--v:.85"><div class="meter__top"><span class="n">Analytics Engineering (dbt)</span><span class="p">Avançado</span></div><div class="meter__rail"><i class="meter__fill"></i></div></div>
+              <div class="meter" style="--v:.80"><div class="meter__top"><span class="n">Python &amp; Automação</span><span class="p">Avançado</span></div><div class="meter__rail"><i class="meter__fill"></i></div></div>
+              <div class="meter" style="--v:.90"><div class="meter__top"><span class="n">FP&amp;A &amp; Controladoria</span><span class="p">Especialista</span></div><div class="meter__rail"><i class="meter__fill"></i></div></div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ STACK -->
+<section class="section" id="stack">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <div class="sec-head__top">
+          <span class="sec-num">05</span>
+          <span class="eyebrow">Ferramentas de trabalho</span>
+        </div>
+        <h2 class="h1" data-reveal>Stack pragmática:<br>a ferramenta serve ao problema.</h2>
+      </div>
+      <p class="lead small" data-reveal style="--d:120ms">
+        Trabalho com o que já roda na sua casa. Se a stack existe e funciona, eu me adapto —
+        migração só quando o ganho justifica o custo.
+      </p>
+    </header>
+
+    <div class="stack">
+      <div class="stack__col" data-reveal style="--d:0ms">
+        <h3>Análise &amp; BI</h3>
+        <div class="stack__items">
+          <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Metabase</span>
+          <span class="tag">Tableau</span><span class="tag">Looker Studio</span><span class="tag">Excel avançado</span>
+        </div>
+      </div>
+      <div class="stack__col" data-reveal style="--d:80ms">
+        <h3>Engenharia de Dados</h3>
+        <div class="stack__items">
+          <span class="tag">SQL</span><span class="tag">dbt</span><span class="tag">Databricks</span>
+          <span class="tag">Snowflake</span><span class="tag">Spark</span><span class="tag">DuckDB</span><span class="tag">ETL / ELT</span>
+        </div>
+      </div>
+      <div class="stack__col" data-reveal style="--d:160ms">
+        <h3>Linguagens &amp; IA</h3>
+        <div class="stack__items">
+          <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span>
+          <span class="tag">NLP</span><span class="tag">IA Generativa</span><span class="tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="stack__col" data-reveal style="--d:240ms">
+        <h3>Cloud &amp; DevOps</h3>
+        <div class="stack__items">
+          <span class="tag">Git</span><span class="tag">Azure DevOps</span><span class="tag">GitHub Actions</span>
+          <span class="tag">Docker</span><span class="tag">Netlify</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <div class="sec-head__top">
+          <span class="sec-num">06</span>
+          <span class="eyebrow">Perguntas frequentes</span>
+        </div>
+        <h2 class="h1" data-reveal>Antes de você<br>me escrever.</h2>
+      </div>
+      <p class="lead small" data-reveal style="--d:120ms">
+        Se a sua dúvida não estiver aqui, o formulário abaixo chega direto em mim —
+        respondo em até 24 horas úteis.
+      </p>
+    </header>
+
+    <div class="faq" data-reveal>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">Como funciona o primeiro contato?<span class="faq__ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><div>Você descreve o problema pelo formulário e eu respondo em até 24 horas úteis com uma primeira leitura. Se fizer sentido, marcamos uma conversa de 30 a 45 minutos, sem custo, para entender o contexto. Só depois disso eu proponho escopo e valor — nunca antes de entender o problema.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">Quais são os modelos de contratação?<span class="faq__ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><div>Três formatos: <b>projeto com escopo fechado</b> (entrega e prazo definidos), <b>alocação parcial recorrente</b> (algumas horas por semana, para quem precisa de continuidade) e <b>diagnóstico pontual</b> (uma auditoria da base ou do dashboard atual, com relatório de recomendações). O formato sai da conversa inicial, não de um cardápio pronto.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">Você trabalha com a stack que eu já tenho?<span class="faq__ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><div>Sim, e essa é a preferência. Se a sua empresa já roda Power BI, Metabase, Tableau ou Looker, eu construo em cima disso. Troca de ferramenta só entra na mesa quando o custo da migração é claramente menor que o custo de continuar — e nesse caso eu mostro a conta antes de recomendar.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">Quanto tempo leva um projeto?<span class="faq__ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><div>Depende do estado da base, que é justamente o que o diagnóstico revela. Como referência: um diagnóstico leva de 1 a 2 semanas; um dashboard sobre dados já organizados, de 2 a 4 semanas; uma modelagem completa com dbt e handover, de 6 a 10 semanas. O método entrega algo utilizável em cada fase, então você não espera o fim para ver valor.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">Como fica a confidencialidade dos dados?<span class="faq__ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><div>Assino NDA sem burocracia e trabalho preferencialmente dentro do ambiente do cliente, com os acessos mínimos necessários. Todos os cases publicados aqui usam dados demonstrativos ou sintéticos — nenhum dado real de cliente aparece neste site, e essa regra não tem exceção.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">A S³ Labs é uma equipe ou é você?<span class="faq__ic" aria-hidden="true"></span></button>
+        <div class="faq__a"><div>Hoje sou eu. A S³ Labs é a estrutura pela qual atuo como consultor independente, e a transparência sobre isso é proposital: você fala com quem executa, do primeiro e-mail ao handover — sem camada comercial no meio e sem projeto repassado para um júnior. Para demandas maiores, componho com parceiros de confiança e digo isso abertamente.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== CONTATO -->
+<section class="section" id="contato">
+  <div class="wrap">
+    <div class="cta-band" data-reveal style="margin-bottom:clamp(2rem,5vw,3.5rem)">
+      <div class="cta-band__grid" aria-hidden="true"></div>
+      <span class="eyebrow">Vamos conversar</span>
+      <h2 class="h-display" style="font-size:clamp(1.9rem,4.6vw,3.4rem);max-width:22ch">
+        Me conte qual decisão está travada por falta de dado.
+      </h2>
+      <p class="lead">Resposta em até 24 horas úteis. A conversa inicial não tem custo nem compromisso.</p>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg hero-pattern">
-        <div class="container mx-auto px-6 py-20">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div class="mb-2">
-                        <span class="text-sm font-medium text-slate-400">OLÁ, EU SOU</span>
-                    </div>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                        <span class="text-white">Mário</span>
-                        <span class="gradient-text">Schenkel</span>
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl font-medium text-slate-400 mb-8">
-                        Business Data Analyst
-                    </h2>
-                    <p class="text-lg text-slate-400 mb-10 max-w-lg">
-                        Transformo dados complexos em insights estratégicos.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-medium py-3 px-8 rounded-full transition duration-300 hover:shadow-lg hover:shadow-indigo-500/20">
-                            Fale Comigo
-                        </a>
-                        <a href="#portfolio" class="border border-slate-700 text-slate-300 font-medium py-3 px-8 rounded-full transition duration-300 hover:bg-slate-800/50 hover:border-slate-600">
-                            Ver Portfólio
-                        </a>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 mt-12 lg:mt-0">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur-lg opacity-20"></div>
-                        <div class="relative bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden">
-                            <img src="assets/portfolio.gif"
-                                 alt="Data Analysis" 
-                                 class="w-full h-auto">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="contact">
+      <aside class="contact__panel" data-reveal="left">
+        <h3 class="h2">Canais diretos</h3>
+
+        <div class="contact__row">
+          <span class="contact__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+          <div><span class="k">E-mail</span><a href="mailto:schenkel.mario@hotmail.com" class="v">schenkel.mario@hotmail.com</a></div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-sm font-medium text-slate-400">SOBRE MIM</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">
-                    <span class="text-white">De Negócios a Dados: </span>
-                    <span class="gradient-text">Análise e Transformação</span>
-                </h2>
-            </div>
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/3">
-                    <div class="profile-container">
-                        <img src="assets/profile.JPG" alt="Mário Schenkel" class="profile-pic">
-                    </div>
-                </div>
-                <div class="lg:w-2/3 mt-12 lg:mt-0">
-                    <h3 class="text-2xl font-bold text-white mb-6">Trajetória de Negócios para Dados</h3>
-                    <p class="text-slate-400 mb-8 leading-relaxed">
-                        Sou um profissional apaixonado por dados e por tecnologia, com sólida bagagem em Controladoria, FP&amp;A, Pricing e Revenue Management. 
-                        Minha carreira começou no universo de negócios, onde desenvolvi visão crítica e estratégica, e evoluiu para a área de Dados, onde agrego valor com análise, visualização e automação. 
-                        <br><br>
-                        Hoje atuo no cruzamento entre negócios e tecnologia, ajudando empresas a tomarem decisões baseadas em evidências e mentorando profissionais que querem migrar para a área de Dados.
-                    </p>
-
-                    <div class="mb-10">
-                        <h4 class="text-xl font-bold text-white mb-4">Habilidades Técnicas</h4>
-                        <div class="flex flex-wrap gap-3">
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-chart-line text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">Power BI</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-database text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">SQL</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fab fa-python text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">Python</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-code-branch text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">DBT</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-code-branch text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">Databricks</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fab fa-git-alt text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">Git</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-cloud text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">Azure</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-chart-pie text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">Metabase</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fas fa-brain text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">IA Analytics</span>
-                            </div>
-                            <div class="skill-pill bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-full flex items-center border border-slate-700">
-                                <i class="fab fa-html5 text-indigo-400 mr-2"></i>
-                                <span class="text-slate-300">HTML/CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                            <div class="flex items-center mb-4">
-                                <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                    <i class="fas fa-briefcase text-indigo-400"></i>
-                                </div>
-                                <h5 class="font-bold text-white">Experiências Recentes</h5>
-                            </div>
-                            <ul class="space-y-4">
-                                <li>
-                                    <p class="text-sm font-medium text-white">Paraná Banco S/A</p>
-                                    <p class="text-xs text-slate-400">Data Analyst | Mar/2025 - Fev/2026</p>
-                                    <p class="text-xs text-slate-400 mt-1">
-                                        Interface com Stakeholders: Tradução de necessidades das áreas de negócio em modelagens e dashboards focados em performance de jornadas de marketing.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="text-sm font-medium text-white">Zenvia</p>
-                                    <p class="text-xs text-slate-400">Data Analyst &amp; Senior Controllership Analyst | Jun/2023 - Jan/2025</p>
-                                    <p class="text-xs text-slate-400 mt-1">
-                                        Atuação em projetos de dados, integração de IA, construção de dashboards em Metabase e Tableau para análises financeiras.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="text-sm font-medium text-white">Saque e Pague</p>
-                                    <p class="text-xs text-slate-400"> Controller Data Analyst | Ago/2022 - Jun/2023</p>
-                                    <p class="text-xs text-slate-400 mt-1">
-                                        Desenvolvimento e automação de relatórios e pipelines de dados (Power BI e SQL), atuando na sustentação de métricas estratégicas de negócio.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="text-sm font-medium text-white">Universidade Feevale</p>
-                                    <p class="text-xs text-slate-400">Controllership Specialist | Jun/2018 - Ago/2022</p>
-                                    <p class="text-xs text-slate-400 mt-1">
-                                        Garantia da integridade, precisão e confiabilidade das informações financeiras e suporte à gestão em projetos de controladoria.
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="space-y-6">
-                            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                <div class="flex items-center mb-4">
-                                    <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                        <i class="fas fa-graduation-cap text-indigo-400"></i>
-                                    </div>
-                                    <h5 class="font-bold text-white">Formação Acadêmica</h5>
-                                </div>
-                                <ul class="space-y-4">
-                                    <li>
-                                        <span class="text-sm font-medium text-white">Administração de Empresas (Bacharelado)</span>
-                                        <span class="block text-xs text-slate-400">Universidade do Vale do Rio dos Sinos (Unisinos) | 2015 - 2020</span>
-                                    </li>
-                                    <li>
-                                        <span class="text-sm font-medium text-white">MBA em Administração de Banco de Dados</span>
-                                        <span class="block text-xs text-slate-400">FAMESP | 2022 - 2023</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                <div class="flex items-center mb-4">
-                                    <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                        <i class="fas fa-certificate text-indigo-400"></i>
-                                    </div>
-                                    <h5 class="font-bold text-white">Certificações</h5>
-                                </div>
-                                <ul class="space-y-2">
-                                    <li class="text-slate-300 text-sm">Microsoft Power BI para Business Intelligence e Data Science</li>
-                                    <li class="text-slate-300 text-sm">Fundamentos de Linguagem Python para Análise de Dados e Data Science</li>
-                                    <li class="text-slate-300 text-sm">Produtividade Inteligente</li>
-                                </ul>
-                            </div>
-                            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                <div class="flex items-center mb-4">
-                                    <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                        <i class="fas fa-language text-indigo-400"></i>
-                                    </div>
-                                    <h5 class="font-bold text-white">Idiomas</h5>
-                                </div>
-                                <ul class="space-y-2">
-                                    <li><span class="text-slate-300">Português</span> <span class="text-xs text-slate-400">(nativo)</span></li>
-                                    <li><span class="text-slate-300">Inglês</span> <span class="text-xs text-slate-400">(leitura e escrita)</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div></section>
-
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-slate-800/30">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-sm font-medium text-slate-400">MEU TRABALHO</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">
-                    <span class="text-white">Projetos </span>
-                    <span class="gradient-text">Recentes</span>
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto mt-4">
-                    Cases reais com dados demonstrativos elaborados para demonstrar minhas habilidades em análise de dados e visualização.
-                </p>
-            </div>
-            
-            <div class="relative">
-                <button id="portfolioPrev" class="hidden md:flex absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900/90 text-slate-300 transition hover:border-indigo-500/50 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="button" aria-label="Projeto anterior">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <div id="portfolioCarousel" class="portfolio-track flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth pb-4" aria-label="Projetos recentes">
-                <!-- Case 1 -->
-                <div class="portfolio-slide">
-                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="assets/dashboard-demo.gif"
-                             alt="Dashboard executivo de e-commerce no Metabase"
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2 gap-3">
-                            <h3 class="text-xl font-bold text-white">DBT + Metabase E-commerce case</h3>
-                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full whitespace-nowrap">Analytics Eng.</span>
-                        </div>
-                        <p class="text-slate-400 mb-4 text-sm">
-                            Pipeline analítico completo, dos dados raw ao dashboard executivo, com dbt, DuckDB e Metabase.
-                        </p>
-                        <div class="flex justify-between items-center gap-4">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">dbt</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">DuckDB</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Metabase</span>
-                            </div>
-                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center whitespace-nowrap" onclick="openModal('modalDbtMetabase')">
-                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                <!-- Case 2 -->
-                <div class="portfolio-slide">
-                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="assets/VOC.png"
-                             alt="Voice of Customer Dashboard" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-white">Voice of Customer Dashboard</h3>
-                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full">Power Bi</span>
-                        </div>
-                        <p class="text-slate-400 mb-4 text-sm">
-                            Classificação automática de feedbacks usando GPT para análise de sentimentos e tópicos.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex space-x-2">
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Power Bi</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">DAX</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Python</span>
-                            </div>
-                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center" onclick="openModal('modal1')">
-                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                
-                <!-- Case 3 -->
-                <div class="portfolio-slide">
-                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="assets/churn.png"
-                             alt="Customer Churn Prediction" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-white">Customer Churn Prediction</h3>
-                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full">Python</span>
-                        </div>
-                        <p class="text-slate-400 mb-4 text-sm">
-                            Análise Preditiva de Retenção baseada na Dor do Cliente.
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex space-x-2">
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Python</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Databricks</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Spark</span>
-                            </div>
-                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center" onclick="openModal('modal2')">
-                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                
-                <!-- Case 4 -->
-                <div class="portfolio-slide">
-                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="assets/dre-pdv.png"
-                             alt="Painel Financeiro B2B" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold text-white">DRE por PDV</h3>
-                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full">Python</span>
-                        </div>
-                        <p class="text-slate-400 mb-4 text-sm">
-                            Analise autônoma de pontos ofensores de DRE e direcionamentos de plano de ação por PDV (Ponto de Venda).
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex space-x-2">
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Python</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">ETL</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Plotly</span>
-                            </div>
-                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center" onclick="openModal('modal3')">
-                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                <!-- Case 5 -->
-                <div class="portfolio-slide">
-                <div class="card-hover h-full bg-slate-900 rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500/50">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="assets/BaseClara.png"
-                             alt="Base Clara data quality SaaS"
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2 gap-3">
-                            <h3 class="text-xl font-bold text-white">Base Clara</h3>
-                            <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-full whitespace-nowrap">SaaS</span>
-                        </div>
-                        <p class="text-slate-400 mb-4 text-sm">
-                            Ferramenta gratuita para diagnosticar qualidade de arquivos antes da análise e do dashboard, 100% no navegador.
-                        </p>
-                        <div class="flex justify-between items-center gap-4">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Data Quality</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">CSV/XLSX</span>
-                                <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded-full">Client-side</span>
-                            </div>
-                            <button class="text-indigo-400 hover:text-indigo-300 text-sm font-medium flex items-center whitespace-nowrap" onclick="openModal('modalBaseClara')">
-                                Ver Detalhes <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                </div>
-
-                <button id="portfolioNext" class="hidden md:flex absolute right-0 top-1/2 z-10 translate-x-1/2 -translate-y-1/2 h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-900/90 text-slate-300 transition hover:border-indigo-500/50 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" type="button" aria-label="Proximo projeto">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div id="portfolioDots" class="mt-6 flex justify-center gap-3" aria-label="Navegacao dos projetos"></div>
-            
-            <div class="text-center mt-12">
-                <a href="https://github.com/schenkel94?tab=repositories" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium">
-                    Ver mais projetos <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
+        <div class="contact__row">
+          <span class="contact__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+          <div><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/marioschenkel" target="_blank" rel="noopener" class="v">/in/marioschenkel</a></div>
         </div>
-    </section>
 
-    <!-- Portfolio Modals -->
-    <!-- DBT + Metabase Modal -->
-    <div id="modalDbtMetabase" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
-        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
-            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modalDbtMetabase')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="p-8">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="sticky top-8">
-                            <h3 class="text-2xl font-bold text-white mb-2">DBT + Metabase E-commerce case</h3>
-                            <p class="text-slate-400 mb-6">Analytics Engineering e BI em um fluxo completo de e-commerce</p>
-
-                            <div class="mb-8">
-                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Pipeline de dados do raw ao dashboard executivo, simulando um fluxo real de e-commerce.</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Modelagem em camadas: raw, staging, quality e analytics.</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Testes dbt para chaves, unicidade, integridade referencial, valores aceitos e regras de receita.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-3">Tecnologias</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">dbt</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">DuckDB</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Metabase</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Python</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">SQL</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="md:w-1/2">
-                        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-                            <img src="assets/dashboard-demo.gif"
-                                 alt="Dashboard demo do case DBT e Metabase"
-                                 class="rounded-lg w-full">
-                        </div>
-
-                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
-                            <h4 class="text-lg font-bold text-white mb-3">Processo do Projeto</h4>
-                            <p class="text-sm text-slate-400 mb-4">
-                                O case cobre geração de dados, transformação, testes, documentação, camada analítica e visualização. A estrutura deixa a análise mais confiável, reprodutível e fácil de evoluir.
-                            </p>
-                            <div class="grid grid-cols-2 gap-2 mb-4">
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">1. Dados</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">2. Transformação</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">3. Testes</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">4. Documentação</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">5. Analytics</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">6. Dashboard</span>
-                            </div>
-                            <a href="https://github.com/schenkel94/DBT-Metabase-Stack" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-                                Acessar Repositório <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="contact__row">
+          <span class="contact__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><span class="k">Base</span><span class="v">Rio Grande do Sul · Brasil</span></div>
         </div>
+
+        <div class="contact__row">
+          <span class="contact__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <div><span class="k">SLA de resposta</span><span class="v">24 horas úteis</span></div>
+        </div>
+
+        <hr class="hairline">
+
+        <div>
+          <span class="k mono" style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:.6rem">Atendimento</span>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span class="tag tag--acid">Remoto — Brasil</span><span class="tag">Português</span><span class="tag">Inglês</span>
+          </div>
+        </div>
+      </aside>
+
+      <div data-reveal="right">
+        <form class="form" action="https://formsubmit.co/schenkel.mario@hotmail.com" method="POST" id="contactForm">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://schenkel94.github.io/portfolio/obrigado.html">
+          <input type="hidden" name="_subject" value="S3 Labs — novo contato pelo site">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <h3 class="h2">Envie uma mensagem</h3>
+
+          <div class="form__grid">
+            <div class="field">
+              <label for="name">Nome completo <span class="req">*</span></label>
+              <input class="input" type="text" id="name" name="name" required placeholder="Como devo te chamar?" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email">E-mail <span class="req">*</span></label>
+              <input class="input" type="email" id="email" name="email" required placeholder="voce@empresa.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form__grid">
+            <div class="field">
+              <label for="company">Empresa</label>
+              <input class="input" type="text" id="company" name="company" placeholder="Opcional" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="subject">Assunto <span class="req">*</span></label>
+              <select class="input" id="subject" name="subject" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="Analytics Engineering">Analytics Engineering / dbt</option>
+                <option value="BI e Dashboards">BI &amp; Dashboards</option>
+                <option value="Pipelines e Automacao">Pipelines &amp; Automação</option>
+                <option value="Analytics com IA">Analytics com IA</option>
+                <option value="FP&A e Financeiro">FP&amp;A / Analytics Financeiro</option>
+                <option value="Diagnostico de dados">Diagnóstico &amp; Qualidade de dados</option>
+                <option value="Mentoria">Mentoria / Capacitação</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Qual o desafio? <span class="req">*</span></label>
+            <textarea class="input" id="message" name="message" rows="5" required placeholder="Descreva a decisão que está travada, a métrica que ninguém confia ou o processo manual que consome o time."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block">
+            Enviar mensagem
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <p class="form__note">
+            Seus dados são usados apenas para responder este contato. Prefere e-mail direto?
+            <a href="mailto:schenkel.mario@hotmail.com">schenkel.mario@hotmail.com</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- =========================================================== FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="#top" class="brand">
+          <img src="assets/img/logo-mark.png" alt="" class="brand__mark" width="30" height="30" loading="lazy">
+          <span>
+            <span class="brand__word">S<sup>3</sup> LABS</span>
+            <span class="brand__sub">Engineering better decisions.</span>
+          </span>
+        </a>
+        <p class="small muted">
+          Consultoria independente em Dados &amp; Business Analytics, fundada e conduzida
+          por Mário Schenkel. Do diagnóstico ao handover.
+        </p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/in/marioschenkel" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a href="https://github.com/schenkel94" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C19.9 4.8 21 5.1 21 5.1c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          </a>
+          <a href="mailto:schenkel.mario@hotmail.com" aria-label="E-mail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#fundador">Fundador</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Projetos</h4>
+        <ul>
+          <li><a href="https://github.com/schenkel94/DBT-Metabase-Stack" target="_blank" rel="noopener">dbt + Metabase ↗</a></li>
+          <li><a href="https://github.com/schenkel94/VoC" target="_blank" rel="noopener">Voice of Customer ↗</a></li>
+          <li><a href="https://github.com/schenkel94/churn" target="_blank" rel="noopener">Churn Prediction ↗</a></li>
+          <li><a href="https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV" target="_blank" rel="noopener">DRE por PDV ↗</a></li>
+          <li><a href="https://baseclara.netlify.app" target="_blank" rel="noopener">Base Clara ↗</a></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Modal 1 -->
-    <div id="modal1" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
-        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
-            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modal1')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="p-8">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="sticky top-8">
-                            <h3 class="text-2xl font-bold text-white mb-2">Voice of Customer Dashboard</h3>
-                            <p class="text-slate-400 mb-6">Classificação automática de feedbacks usando processamento de linguagem natural</p>
-                            
-                            <div class="mb-8">
-                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Classificação automática de textos (Financeiro, Plataforma, Atendimento)</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Análise de sentimentos (Positivo, Neutro, Negativo)</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Filtros por fonte (NPS, CSAT, Buzzmonitor, Reclame Aqui)</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-3">Tecnologias</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Metabase</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Python</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">NLP</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">SQL</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-1/2">
-
-<!-- Substituí a imagem pelo iframe do Metabase 
-            <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-              <iframe 
-                src="http://localhost:3000/public/dashboard/dd578e9f-005e-41d1-88a5-638d6f96ce52"
-                frameborder="0"
-                width="100%"
-                height="600"
-                allowtransparency="true"
-                class="rounded-lg w-full">
-              </iframe>
-            </div> -->
-
-<!-- Substituí a imagem pelo iframe do powerbi -->
-<div class="bg-slate-800 rounded-xl p-2 mb-6 border border-slate-700 shadow-inner">
-    <div class="relative w-full" style="padding-top: 56.25%;"> <iframe 
-            title="Voice of Customer Dashboard"
-            class="absolute top-0 left-0 w-full h-full rounded-lg"
-            src="https://app.powerbi.com/view?r=eyJrIjoiYTU4MDhlOTAtOWZkOC00ZjQwLThiZjUtMWNiZGEwOTcyYTM2IiwidCI6ImE2Yjc2OWVmLTlmN2MtNDcxZS04Y2Q2LWNjYTBiNzE4YmJmZSJ9" 
-            frameborder="0" 
-            allowFullScreen="true">
-        </iframe>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> S³ Labs · Mário Schenkel. Todos os direitos reservados.</span>
+      <span class="mono">Engineering better decisions.</span>
     </div>
+  </div>
+  <div class="footer__word" aria-hidden="true">S³ LABS</div>
+</footer>
+
+<!-- =========================================================== MODAIS -->
+<div class="modal" id="m-dbt" role="dialog" aria-modal="true" aria-labelledby="m-dbt-t">
+  <div class="modal__box">
+    <div class="modal__head">
+      <div>
+        <span class="eyebrow">Analytics Engineering</span>
+        <h3 class="h2" id="m-dbt-t" style="margin-top:.4rem">Stack dbt + Metabase — E-commerce</h3>
+      </div>
+      <button class="modal__close" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__shot"><img src="assets/cases/dashboard-demo.gif" alt="Demonstração do dashboard executivo em Metabase" loading="lazy"></div>
+      <div class="modal__kpis">
+        <div class="kpi"><span class="v">4</span><span class="k">Camadas do modelo</span></div>
+        <div class="kpi"><span class="v">100%</span><span class="k">Modelos com teste</span></div>
+        <div class="kpi"><span class="v">1</span><span class="k">Comando para rodar</span></div>
+      </div>
+      <div class="modal__section">
+        <h4>O problema</h4>
+        <p>Dados de e-commerce espalhados em arquivos crus, sem modelo, sem teste e sem ninguém capaz de responder com segurança qual produto realmente dava margem. Todo relatório nascia de um recorte manual diferente — e por isso nenhum número batia com o outro.</p>
+      </div>
+      <div class="modal__section">
+        <h4>O que eu construí</h4>
+        <ul>
+          <li>Pipeline completo em <b>dbt sobre DuckDB</b>, das fontes cruas até as tabelas de consumo</li>
+          <li>Arquitetura em camadas: <b>sources → staging → intermediate → marts</b></li>
+          <li>Testes automatizados de unicidade, integridade referencial e valores nulos</li>
+          <li>Documentação e lineage gerados pelo próprio dbt, versionados em Git</li>
+          <li>Dashboard executivo em <b>Metabase</b> lendo apenas a camada de marts</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4>Por que importa</h4>
+        <p>Quem consome o painel para de discutir se o número está certo e passa a discutir a decisão. O modelo é reproduzível por qualquer pessoa com um comando, e qualquer mudança de regra acontece em um lugar só — não em doze planilhas.</p>
+      </div>
+      <div class="modal__foot">
+        <a href="https://github.com/schenkel94/DBT-Metabase-Stack" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver repositório ↗</a>
+      </div>
+    </div>
+  </div>
 </div>
-                        
-                        
-                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
-                            <h4 class="text-lg font-bold text-white mb-3">Impacto do Projeto</h4>
-                            <p class="text-sm text-slate-400 mb-4">
-                                Redução de 90% no tempo de análise de feedbacks e identificação de áreas críticas para melhorias em produto e processos.
-                            </p>
-                            <a href="https://github.com/schenkel94/VoC" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-                                Acessar Dashboard Completo <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+<div class="modal" id="m-voc" role="dialog" aria-modal="true" aria-labelledby="m-voc-t">
+  <div class="modal__box">
+    <div class="modal__head">
+      <div>
+        <span class="eyebrow">IA &amp; NLP</span>
+        <h3 class="h2" id="m-voc-t" style="margin-top:.4rem">Voice of Customer Dashboard</h3>
+      </div>
+      <button class="modal__close" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
-
-    <!-- Modal 2 -->
-    <div id="modal2" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
-        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
-            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modal2')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="p-8">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="sticky top-8">
-                            <h3 class="text-2xl font-bold text-white mb-2">Customer Churn Prediction: Pipeline + Dashboard</h3>
-                            <p class="text-slate-400 mb-6">Análise Preditiva de Retenção baseada na Dor do Cliente</p>
-                            
-                            <div class="mb-8">
-                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Priorizar clientes de maior risco de Churn</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Entender o papel da Voz do Cliente na evasão</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Criar uma ponte entre analytics, operação e tomada de decisão</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-3">Tecnologias</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Databricks</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Python</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Plotly</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Render</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-1/2">
-                        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-                            <img src="assets/churn.png"
-                                 alt="Dashboard Preview" 
-                                 class="rounded-lg w-full">
-                        </div>
-                        
-                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
-                            <h4 class="text-lg font-bold text-white mb-3">Impacto do Projeto</h4>
-                            <p class="text-sm text-slate-400 mb-4">
-                                Identificação dos clientes com maior risco de churn, direcionando ações de retenção que poderiam reduzir a evasão em até 18% e aumentar a precisão da atuação comercial.
-                            </p>
-                            <a href="https://github.com/schenkel94/churn" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-                                Acessar Dashboard Completo <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="modal__body">
+      <div class="modal__shot"><img src="assets/cases/VOC.png" alt="Dashboard de Voice of Customer" loading="lazy"></div>
+      <div class="modal__kpis">
+        <div class="kpi"><span class="v">−90%</span><span class="k">Tempo de análise</span></div>
+        <div class="kpi"><span class="v">Auto</span><span class="k">Sentimento e tópicos</span></div>
+        <div class="kpi"><span class="v">Live</span><span class="k">Demo publicada</span></div>
+      </div>
+      <div class="modal__section">
+        <h4>O problema</h4>
+        <p>Milhares de feedbacks de clientes chegando em texto livre. Alguém lia uma amostra, tirava conclusões e o resto virava arquivo morto. Sem classificação consistente, era impossível dizer se um problema estava crescendo ou diminuindo.</p>
+      </div>
+      <div class="modal__section">
+        <h4>O que eu construí</h4>
+        <ul>
+          <li>Pipeline de <b>NLP com GPT</b> classificando sentimento e tópico de cada feedback</li>
+          <li>Processamento em <b>Databricks</b> com Python, pronto para volume</li>
+          <li>Camada analítica com séries temporais por tema e por sentimento</li>
+          <li>Dashboard em <b>Power BI</b> com drill do tema até o comentário original</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4>Por que importa</h4>
+        <p>A leitura manual saiu do caminho crítico: o time passou a acompanhar tendência de reclamação como acompanha qualquer KPI. E, como cada categoria mantém o link para o texto de origem, a área de produto consegue ir do gráfico à frase do cliente em dois cliques.</p>
+      </div>
+      <div class="modal__foot">
+        <a href="https://github.com/schenkel94/VoC" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver repositório ↗</a>
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiYTU4MDhlOTAtOWZkOC00ZjQwLThiZjUtMWNiZGEwOTcyYTM2IiwidCI6ImE2Yjc2OWVmLTlmN2MtNDcxZS04Y2Q2LWNjYTBiNzE4YmJmZSJ9" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Abrir demo Power BI ↗</a>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Modal 3 -->
-    <div id="modal3" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
-        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
-            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modal3')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="p-8">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="sticky top-8">
-                            <h3 class="text-2xl font-bold text-white mb-2">DRE por PDV</h3>
-                            <p class="text-slate-400 mb-6">Analise autônoma de pontos ofensores de DRE e direcionamentos de plano de ação por PDV (Ponto de Venda).</p>
-                            
-                            <div class="mb-8">
-                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Identificação dos PDVs Críticos</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Identificação dos pontos ofensores no DRE de cada PDV</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Plano de ação sugerido por prioridade de acordo com os pontos ofensores de margem em cada PDV.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-3">Tecnologias</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Linguagem | Python</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">ETL | Jupyter Notebook</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Deploy | HF Spaces</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Dash | Plotly</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-1/2">
-                        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-                            <img src="assets/dre-pdv.png"
-                                 alt="Dashboard Preview" 
-                                 class="rounded-lg w-full">
-                        </div>
-                        
-                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
-                            <h4 class="text-lg font-bold text-white mb-3">Impacto do Projeto</h4>
-                            <p class="text-sm text-slate-400 mb-4">
-                                Possibilidade de agir com mais eficiencia nos PDVs críticos, visando encontrar rapidamente o breakeven saudável para o negócio.
-                            </p>
-                            <a href="https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-                                Acessar Dashboard Completo <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="modal" id="m-churn" role="dialog" aria-modal="true" aria-labelledby="m-churn-t">
+  <div class="modal__box">
+    <div class="modal__head">
+      <div>
+        <span class="eyebrow">Machine Learning</span>
+        <h3 class="h2" id="m-churn-t" style="margin-top:.4rem">Customer Churn Prediction</h3>
+      </div>
+      <button class="modal__close" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     </div>
-
-    <!-- Base Clara Modal -->
-    <div id="modalBaseClara" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
-        <div class="bg-slate-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto relative m-4 border border-slate-800">
-            <button class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 rounded-full p-2" onclick="closeModal('modalBaseClara')">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="p-8">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="sticky top-8">
-                            <h3 class="text-2xl font-bold text-white mb-2">Base Clara</h3>
-                            <p class="text-slate-400 mb-6">Projeto open source para diagnóstico rápido de qualidade de dados</p>
-
-                            <div class="mb-8">
-                                <h4 class="text-lg font-bold text-white mb-3">Recursos Principais</h4>
-                                <ul class="space-y-3">
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Carregamento de arquivos .csv, .xlsx e .xls direto no navegador.</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Diagnóstico de qualidade com score, riscos de análise e prioridades de tratamento.</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Exemplos práticos de tratamento em Python, Power Query e SQL.</p>
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="h-2 w-2 rounded-full bg-indigo-400"></div>
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-sm text-slate-400">Exportação do diagnóstico para compartilhamento técnico.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-3">Categoria</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">SaaS</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Open Source</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Data Quality</span>
-                                    <span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">BI</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="md:w-1/2">
-                        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
-                            <img src="assets/BaseClara.png"
-                                 alt="Interface do Base Clara"
-                                 class="rounded-lg w-full">
-                        </div>
-
-                        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700">
-                            <h4 class="text-lg font-bold text-white mb-3">Privacidade e Uso</h4>
-                            <p class="text-sm text-slate-400 mb-4">
-                                Sem backend e sem envio de arquivos para servidor: o processamento acontece localmente no navegador. O objetivo é reduzir retrabalho antes do dashboard e transformar problemas de dados em plano acionável.
-                            </p>
-                            <div class="grid grid-cols-2 gap-2 mb-4">
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">1. Acesse</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">2. Envie o arquivo</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">3. Veja o diagnóstico</span>
-                                <span class="text-xs bg-slate-900 text-slate-300 px-3 py-2 rounded-lg border border-slate-700">4. Trate os dados</span>
-                            </div>
-                            <a href="https://baseclara.netlify.app" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 text-sm font-medium">
-                                Acessar Produto Online <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="modal__body">
+      <div class="modal__shot"><img src="assets/cases/churn.png" alt="Painel de predição de churn" loading="lazy"></div>
+      <div class="modal__kpis">
+        <div class="kpi"><span class="v">−18%</span><span class="k">Evasão potencial</span></div>
+        <div class="kpi"><span class="v">Spark</span><span class="k">Processamento</span></div>
+        <div class="kpi"><span class="v">Top-N</span><span class="k">Fila de retenção</span></div>
+      </div>
+      <div class="modal__section">
+        <h4>O problema</h4>
+        <p>A retenção agia depois do cancelamento, quando o cliente já tinha decidido. Faltava uma forma de saber <i>quem</i> estava em risco e, principalmente, <i>por quê</i> — porque uma lista de nomes sem motivo não vira ação comercial.</p>
+      </div>
+      <div class="modal__section">
+        <h4>O que eu construí</h4>
+        <ul>
+          <li>Modelo preditivo de evasão treinado sobre comportamento e histórico de atrito</li>
+          <li>Engenharia de atributos em <b>Databricks + Spark</b>, pronta para reprocessar</li>
+          <li>Ranking de risco com o principal fator de contribuição por cliente</li>
+          <li>Visualização interativa em <b>Plotly</b>, publicada para consumo do time</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4>Por que importa</h4>
+        <p>A retenção passa a trabalhar por fila priorizada, não por intuição. Cada contato já sai com a hipótese da dor daquele cliente, o que muda a conversa e melhora o aproveitamento do esforço comercial.</p>
+      </div>
+      <div class="modal__foot">
+        <a href="https://github.com/schenkel94/churn" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver repositório ↗</a>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-sm font-medium text-slate-400">ENTRE EM CONTATO</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2">
-                    <span class="text-white">Vamos </span>
-                    <span class="gradient-text">Conversar</span>
-                </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto mt-4">
-                    Estou disponível para oportunidades de trabalho, projetos freelance ou simplesmente para trocar ideias.
-                </p>
-            </div>
-            
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <div class="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-                        <h3 class="text-xl font-bold text-white mb-6">Informações de Contato</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                    <i class="fas fa-envelope text-indigo-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-white mb-1">Email</h4>
-                                    <a href="mailto:schenkel.mario@hotmail.com" class="text-slate-400 hover:text-indigo-400">schenkel.mario@hotmail.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                    <i class="fab fa-linkedin-in text-indigo-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-white mb-1">LinkedIn</h4>
-                                    <a href="https://linkedin.com/in/marioschenkel" target="_blank" class="text-slate-400 hover:text-indigo-400">linkedin.com/in/marioschenkel</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-indigo-500/10 p-3 rounded-lg mr-4">
-                                    <i class="fas fa-map-marker-alt text-indigo-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-medium text-white mb-1">Localização</h4>
-                                    <p class="text-slate-400">Porto Alegre, RS - Brasil</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-10 pt-6 border-t border-slate-700">
-                            <h4 class="text-lg font-medium text-white mb-4">SLA de atendimento</h4>
-                            <p class="text-slate-400">24 horas úteis</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lg:w-1/2">
-                    <div class="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-                        <h3 class="text-xl font-bold text-white mb-6">Envie uma Mensagem</h3>
-                        
-                        
-<form action="https://formsubmit.co/schenkel.mario@hotmail.com" method="POST" class="space-y-6">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://schenkel94.github.io/portfolio/obrigado.html">
+<div class="modal" id="m-dre" role="dialog" aria-modal="true" aria-labelledby="m-dre-t">
+  <div class="modal__box">
+    <div class="modal__head">
+      <div>
+        <span class="eyebrow">Analytics Financeiro</span>
+        <h3 class="h2" id="m-dre-t" style="margin-top:.4rem">DRE por Ponto de Venda</h3>
+      </div>
+      <button class="modal__close" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__shot"><img src="assets/cases/dre-pdv.png" alt="Análise de DRE por ponto de venda" loading="lazy"></div>
+      <div class="modal__kpis">
+        <div class="kpi"><span class="v">Auto</span><span class="k">Diagnóstico de ofensores</span></div>
+        <div class="kpi"><span class="v">PDV</span><span class="k">Granularidade</span></div>
+        <div class="kpi"><span class="v">Ação</span><span class="k">Saída do relatório</span></div>
+      </div>
+      <div class="modal__section">
+        <h4>O problema</h4>
+        <p>A DRE consolidada mostrava que a margem tinha caído, mas não onde. Descobrir qual unidade e qual linha de custo puxaram o resultado exigia um garimpo manual por planilha, mês após mês.</p>
+      </div>
+      <div class="modal__section">
+        <h4>O que eu construí</h4>
+        <ul>
+          <li>ETL em <b>Python</b> consolidando a DRE na granularidade de ponto de venda</li>
+          <li>Rotina que identifica automaticamente as linhas ofensoras de cada unidade</li>
+          <li>Direcionamento de plano de ação por PDV, gerado junto da análise</li>
+          <li>Relatório interativo em <b>Plotly</b>, publicado e reprodutível</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4>Por que importa</h4>
+        <p>É a tradução direta da minha bagagem de controladoria para código: em vez de a análise financeira depender de quem sabe onde olhar, ela vira rotina. O gestor abre o relatório e já recebe o ofensor e o encaminhamento.</p>
+      </div>
+      <div class="modal__foot">
+        <a href="https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ver repositório ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-                            <div>
-                                <label for="name" class="block text-slate-300 mb-2">Nome Completo *</label>
-                                <input type="text" id="name" name="name" required 
-                                       class="form-input w-full px-4 py-3 rounded-lg">
-                            </div>
-                            
-                            <div>
-                                <label for="email" class="block text-slate-300 mb-2">E-mail *</label>
-                                <input type="email" id="email" name="email" required 
-                                       class="form-input w-full px-4 py-3 rounded-lg">
-                            </div>
-                            
-                            <div>
-                                <label for="company" class="block text-slate-300 mb-2">Empresa (opcional)</label>
-                                <input type="text" id="company" name="company" 
-                                       class="form-input w-full px-4 py-3 rounded-lg">
-                            </div>
-                            
-                            <div>
-                                <label for="subject" class="block text-slate-300 mb-2">Assunto *</label>
-                                <select id="subject" name="subject" required 
-                                        class="form-input w-full px-4 py-3 rounded-lg">
-                                    <option value="" disabled selected>Selecione uma opção</option>
-                                    <option value="consultoria">Consultoria</option>
-                                    <option value="dashboard">Desenvolvimento de Dashboard</option>
-                                    <option value="outros">Outros</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label for="message" class="block text-slate-300 mb-2">Mensagem *</label>
-                                <textarea id="message" name="message" rows="5" required 
-                                          class="form-input w-full px-4 py-3 rounded-lg"></textarea>
-                            </div>
-                            
-                            <button type="submit" 
-                                    class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-medium w-full py-3 px-6 rounded-lg transition duration-300 hover:shadow-lg hover:shadow-indigo-500/20">
-                                Enviar Mensagem
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="modal" id="m-clara" role="dialog" aria-modal="true" aria-labelledby="m-clara-t">
+  <div class="modal__box">
+    <div class="modal__head">
+      <div>
+        <span class="eyebrow">Produto · Data Quality</span>
+        <h3 class="h2" id="m-clara-t" style="margin-top:.4rem">Base Clara</h3>
+      </div>
+      <button class="modal__close" data-close aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="modal__body">
+      <div class="modal__shot"><img src="assets/cases/BaseClara.png" alt="Interface da ferramenta Base Clara" loading="lazy"></div>
+      <div class="modal__kpis">
+        <div class="kpi"><span class="v">0</span><span class="k">Dados que saem do PC</span></div>
+        <div class="kpi"><span class="v">Free</span><span class="k">Sem cadastro</span></div>
+        <div class="kpi"><span class="v">CSV<span style="color:var(--ink-3)">/</span>XLSX</span><span class="k">Formatos</span></div>
+      </div>
+      <div class="modal__section">
+        <h4>O problema</h4>
+        <p>Todo projeto de dados começa igual: alguém manda uma planilha e ninguém sabe o estado dela. Colunas duplicadas, datas em três formatos, campos vazios no meio. Esse diagnóstico é sempre feito à mão, sempre do zero.</p>
+      </div>
+      <div class="modal__section">
+        <h4>O que eu construí</h4>
+        <ul>
+          <li>Ferramenta web que analisa CSV/XLSX e devolve um relatório de qualidade</li>
+          <li>Detecção de nulos, duplicatas, tipos inconsistentes e cardinalidade suspeita</li>
+          <li>Processamento <b>100% client-side</b> — o arquivo nunca sai da máquina do usuário</li>
+          <li>Publicada de graça, sem cadastro, para qualquer pessoa usar</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4>Por que importa</h4>
+        <p>É o passo zero do meu próprio método virado produto. Rodar o diagnóstico antes de prometer prazo evita a surpresa mais cara de qualquer projeto de dados — e a decisão de processar tudo no navegador remove a objeção de confidencialidade que trava esse tipo de checagem.</p>
+      </div>
+      <div class="modal__foot">
+        <a href="https://baseclara.netlify.app" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Abrir a ferramenta ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900/50 border-t border-slate-800 py-8">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-slate-400 text-sm">© 2025 Mário Schenkel. Todos os direitos reservados.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/in/marioschenkel" class="text-slate-400 hover:text-indigo-400">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/schenkel94" class="text-slate-400 hover:text-indigo-400">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="text-slate-400 hover:text-indigo-400">
-                        <i class="fab fa-medium"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-        });
-        
-        closeMobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Modal functions
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Close modals when clicking outside
-        document.querySelectorAll('.modal-overlay').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        });
-
-        // Portfolio carousel
-        const portfolioCarousel = document.getElementById('portfolioCarousel');
-        const portfolioPrev = document.getElementById('portfolioPrev');
-        const portfolioNext = document.getElementById('portfolioNext');
-        const portfolioDots = document.getElementById('portfolioDots');
-        const portfolioSlides = Array.from(document.querySelectorAll('.portfolio-slide'));
-
-        function getPortfolioStep() {
-            if (portfolioSlides.length < 2) {
-                return portfolioCarousel ? portfolioCarousel.clientWidth : 0;
-            }
-
-            return portfolioSlides[1].offsetLeft - portfolioSlides[0].offsetLeft;
-        }
-
-        function getPortfolioSnapPoints(maxScroll) {
-            const points = portfolioSlides.map(slide => {
-                const slideOffset = slide.offsetLeft - portfolioCarousel.offsetLeft;
-                return Math.max(0, Math.min(slideOffset, maxScroll));
-            });
-
-            return points.filter((point, index) => {
-                return index === 0 || Math.abs(point - points[index - 1]) > 2;
-            });
-        }
-
-        function renderPortfolioDots(snapPoints) {
-            const existingPoints = Array.from(portfolioDots.children).map(dot => Number(dot.dataset.scrollLeft));
-            const alreadyRendered = existingPoints.length === snapPoints.length && existingPoints.every((point, index) => {
-                return Math.abs(point - snapPoints[index]) <= 2;
-            });
-
-            if (alreadyRendered) {
-                return;
-            }
-
-            portfolioDots.innerHTML = '';
-
-            snapPoints.forEach((scrollLeft, index) => {
-                const dot = document.createElement('button');
-                dot.type = 'button';
-                dot.className = 'h-2.5 w-2.5 rounded-full bg-slate-700 transition-all hover:bg-indigo-400';
-                dot.dataset.scrollLeft = String(scrollLeft);
-                dot.setAttribute('aria-label', `Ir para o grupo de projetos ${index + 1}`);
-                dot.addEventListener('click', () => {
-                    portfolioCarousel.scrollTo({
-                        left: scrollLeft,
-                        behavior: 'smooth'
-                    });
-                });
-                portfolioDots.appendChild(dot);
-            });
-        }
-
-        function updatePortfolioCarousel() {
-            if (!portfolioCarousel || !portfolioPrev || !portfolioNext || !portfolioDots || !portfolioSlides.length) {
-                return;
-            }
-
-            const maxScroll = portfolioCarousel.scrollWidth - portfolioCarousel.clientWidth;
-            const hasOverflow = maxScroll > 1;
-            const snapPoints = getPortfolioSnapPoints(maxScroll);
-            const currentIndex = snapPoints.reduce((closestIndex, point, index) => {
-                const currentDistance = Math.abs(portfolioCarousel.scrollLeft - point);
-                const closestDistance = Math.abs(portfolioCarousel.scrollLeft - snapPoints[closestIndex]);
-                return currentDistance < closestDistance ? index : closestIndex;
-            }, 0);
-
-            renderPortfolioDots(snapPoints);
-
-            portfolioPrev.hidden = !hasOverflow;
-            portfolioNext.hidden = !hasOverflow;
-            portfolioDots.style.display = hasOverflow ? 'flex' : 'none';
-
-            portfolioPrev.disabled = portfolioCarousel.scrollLeft <= 1;
-            portfolioNext.disabled = portfolioCarousel.scrollLeft >= maxScroll - 1;
-            portfolioPrev.classList.toggle('opacity-40', portfolioPrev.disabled);
-            portfolioNext.classList.toggle('opacity-40', portfolioNext.disabled);
-            portfolioPrev.classList.toggle('cursor-not-allowed', portfolioPrev.disabled);
-            portfolioNext.classList.toggle('cursor-not-allowed', portfolioNext.disabled);
-
-            portfolioDots.querySelectorAll('button').forEach((dot, index) => {
-                const isActive = index === currentIndex;
-                dot.classList.toggle('bg-indigo-400', isActive);
-                dot.classList.toggle('bg-slate-700', !isActive);
-                dot.classList.toggle('w-6', isActive);
-                dot.classList.toggle('w-2.5', !isActive);
-                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
-            });
-        }
-
-        if (portfolioCarousel && portfolioPrev && portfolioNext && portfolioDots) {
-            portfolioPrev.addEventListener('click', () => {
-                portfolioCarousel.scrollBy({ left: -getPortfolioStep(), behavior: 'smooth' });
-            });
-
-            portfolioNext.addEventListener('click', () => {
-                portfolioCarousel.scrollBy({ left: getPortfolioStep(), behavior: 'smooth' });
-            });
-
-            portfolioCarousel.addEventListener('scroll', updatePortfolioCarousel);
-            window.addEventListener('resize', updatePortfolioCarousel);
-            updatePortfolioCarousel();
-        }
-        
-        // Form submission
-        
-        
-        // Close success modal
-        const closeSuccessModal = document.getElementById('closeSuccessModal');
-        const successModal = document.getElementById('successModal');
-
-        if (closeSuccessModal && successModal) {
-            closeSuccessModal.addEventListener('click', function() {
-                successModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-        }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Active nav link highlighting
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= sectionTop - 300) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -1,64 +1,166 @@
-# Mário Schenkel  
-### Data Analyst | Analytics Engineer
+<div align="center">
 
-Transformo dados complexos em **insights estratégicos** para impulsionar decisões de negócio.
+<img src="assets/img/logo-mark.png" width="96" alt="S³ Labs">
 
-<p align="center">
+# S³ LABS
+
+**Engineering better decisions.**
+
+Consultoria independente em **Dados & Business Analytics**
+fundada e conduzida por **Mário Schenkel**
+
+<p>
   <a href="https://schenkel94.github.io/portfolio/">
-    <img src="https://img.shields.io/badge/🌐 Portfólio-000?style=for-the-badge&logo=google-chrome&logoColor=white" />
-  </a>
-  <a href="https://zenoffice.netlify.app/">
-    <img src="https://img.shields.io/badge/🧘 ZenOffice-0A66C2?style=for-the-badge&logo=appveyor&logoColor=white" />
+    <img src="https://img.shields.io/badge/Portfólio-C8F32C?style=for-the-badge&logo=googlechrome&logoColor=0A0C10" alt="Portfólio">
   </a>
   <a href="https://www.linkedin.com/in/marioschenkel">
-    <img src="https://img.shields.io/badge/🔗 LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+    <img src="https://img.shields.io/badge/LinkedIn-0A0C10?style=for-the-badge&logo=linkedin&logoColor=4E8CFF" alt="LinkedIn">
+  </a>
+  <a href="https://baseclara.netlify.app">
+    <img src="https://img.shields.io/badge/Base_Clara-0A0C10?style=for-the-badge&logo=databricks&logoColor=C8F32C" alt="Base Clara">
   </a>
 </p>
 
----
-
-## 👨‍💻 Sobre Mim
-
-Analista de Dados com experiência em transformar informações complexas em **insights estratégicos acionáveis**.  
-Especializado em **Business Intelligence, Power BI e análise de dados**, com foco em impulsionar decisões baseadas em evidências.
+</div>
 
 ---
 
-## 💼 Stack Técnica
+## Sobre
+
+A **S³ Labs** é a estrutura pela qual atuo como consultor independente de dados. Minha
+carreira começou dentro do negócio — anos em **controladoria, FP&A, pricing e revenue
+management** — e migrou para engenharia e análise de dados.
+
+Essa origem define o método: quase nenhum problema de dados é técnico no começo. É
+pergunta mal formulada, métrica sem dono e base que ninguém auditou. O trabalho começa
+pela decisão que precisa ser tomada e termina com o time do cliente mais autônomo do
+que começou.
+
+> **Transparência:** hoje a S³ Labs sou eu. Você fala com quem executa, do primeiro
+> e-mail ao handover — sem camada comercial no meio e sem projeto repassado para
+> terceiros. Para demandas maiores, componho com parceiros e digo isso abertamente.
+
+---
+
+## Serviços
+
+| Frente | O que entrego |
+| :--- | :--- |
+| **Analytics Engineering** | Modelagem dimensional, camadas `staging → marts`, dbt com testes, lineage e documentação versionada |
+| **BI & Dashboards** | Power BI (DAX), Metabase, Tableau, Looker Studio; definição de KPIs e dicionário de métricas |
+| **Plataforma & Pipelines** | ETL/ELT, orquestração de cargas, Databricks, Snowflake, Spark, automação de relatórios |
+| **Analytics com IA** | NLP e classificação de texto, modelos preditivos (churn, propensão), IA generativa no fluxo analítico |
+| **FP&A & Analytics Financeiro** | DRE gerencial, rentabilidade, pricing, revenue management, forecast e análise de desvios |
+| **Diagnóstico & Capacitação** | Auditoria de qualidade de dados, governança, treinamento e mentoria de times |
+
+---
+
+## Método
+
+Cada fase fecha com um artefato utilizável — mesmo que o projeto pare ali.
+
+| # | Fase | Entregável |
+| :-: | :--- | :--- |
+| 01 | **Diagnóstico** | Diagnóstico + escopo fechado |
+| 02 | **Arquitetura & Modelagem** | Modelo versionado em dbt/SQL |
+| 03 | **Visualização & Entrega** | Dashboard em produção |
+| 04 | **Autonomia & Handover** | Time autônomo + documentação |
+
+---
+
+## Cases
+
+Todos os cases usam **dados demonstrativos ou sintéticos** — nenhum dado real de
+cliente é publicado.
+
+### 1. Stack dbt + Metabase — [repositório](https://github.com/schenkel94/DBT-Metabase-Stack)
+Pipeline analítico completo do dado cru ao dashboard executivo. Arquitetura em quatro
+camadas, testes automatizados de unicidade e integridade, lineage gerado pelo dbt.
+`dbt` · `DuckDB` · `Metabase` · `SQL`
+
+### 2. Voice of Customer — [repositório](https://github.com/schenkel94/VoC)
+Classificação automática de feedbacks com NLP e GPT para extrair sentimento e tópicos,
+com drill do gráfico até o comentário de origem. **Redução de ~90% no tempo de análise manual.**
+`Power BI` · `Python` · `NLP` · `Databricks`
+
+### 3. Customer Churn Prediction — [repositório](https://github.com/schenkel94/churn)
+Modelo preditivo que ranqueia clientes por risco de evasão e aponta o fator principal
+de cada caso. **Potencial de redução de até 18% na evasão.**
+`Python` · `Spark` · `Databricks` · `Plotly`
+
+### 4. DRE por PDV — [repositório](https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV)
+Análise autônoma de ofensores da DRE na granularidade de ponto de venda, com plano de
+ação sugerido por unidade.
+`Python` · `Plotly` · `ETL`
+
+### 5. Base Clara — [abrir a ferramenta](https://baseclara.netlify.app)
+Ferramenta gratuita que diagnostica a qualidade de um CSV/XLSX antes da análise.
+Processamento **100% client-side** — o arquivo nunca sai da máquina do usuário.
+`Data Quality` · `Client-side` · `CSV/XLSX`
+
+---
+
+## Stack
+
 | Categoria | Tecnologias |
 | :--- | :--- |
-| **Análise & BI** | Power BI (DAX), Metabase, Tableau, Looker, Storytelling |
-| **Engenharia de Dados** | SQL (Avançado), DBT, Snowflake, Databricks, ETL |
-| **Linguagens** | Python (Pandas, Jupyter, NLP), HTML/CSS |
-| **Ferramentas & Cloud** | Git, Azure DevOps, IA Generativa |
+| **Análise & BI** | Power BI, DAX, Metabase, Tableau, Looker Studio |
+| **Engenharia de Dados** | SQL, dbt, Databricks, Snowflake, Spark, DuckDB, ETL/ELT |
+| **Linguagens & IA** | Python, Pandas, Plotly, NLP, IA Generativa, Jupyter |
+| **Cloud & DevOps** | Git, Azure DevOps, GitHub Actions, Docker, Netlify |
 
 ---
 
-## Projetos em Destaque (Disponíveis neste repositório)
+## Este repositório
 
-### 1. 🗣️ Voice of Customer Dashboard [VoC Repo](https://github.com/schenkel94/VoC/)
-Classificação automática de feedbacks usando **NLP e GPT** para análise de sentimentos e tópicos, reduzindo em 90% o tempo de análise manual.
-- **Ferramentas:** Databricks, Python, Power Bi.
+O site é **estático, sem build e sem dependências de runtime** — publicado no GitHub
+Pages pelo workflow em [`.github/workflows/static.yml`](.github/workflows/static.yml)
+a cada push na `main`.
 
-### 2. 🗣️ Customer Churn Prediction [Churn Repo](https://github.com/schenkel94/churn)
-Identificação dos clientes com maior risco de churn, direcionando ações de retenção que poderiam reduzir a evasão em até 18% e aumentar a precisão da atuação comercial.
-- **Ferramentas:** Databricks, Python, Spark, Render, Plotly
+```
+├── index.html              # página única da S³ Labs
+├── obrigado.html           # confirmação de envio do formulário
+├── favicon.ico
+├── assets/
+│   ├── css/main.css        # design system completo
+│   ├── js/main.js          # interações (vanilla, sem libs)
+│   ├── img/                # marca, retrato sem fundo, OG
+│   └── cases/              # capturas dos projetos
+└── .github/workflows/      # deploy no GitHub Pages
+```
 
-### 3. 🏦 DRE por PDV [Finanças Repo](https://github.com/schenkel94/FINANCAS/tree/main/DRE_PDV)
-Analise autônoma de pontos ofensores de DRE e direcionamentos de plano de ação por PDV (Ponto de Venda).
-- **Ferramentas:** Jupyter Notebook, Plotly, HF Spaces
+**Design system — "Carbon & Chartreuse".** Base carbono (`#0A0C10`) com acento
+chartreuse (`#C8F32C`) e o azul institucional do logo (`#4E8CFF`) usado com
+parcimônia. Tipografia Archivo + JetBrains Mono. Sem framework CSS: o
+`main.css` é escrito à mão sobre custom properties.
 
-### 🧘 Projeto Pessoal: [ZenOffice](https://zenoffice.netlify.app/)
-Uma ferramenta de produtividade para trabalhadores remotos, focada em foco e saúde mental.
+A paleta de séries de dados foi validada em OKLab para separação sob
+deuteranopia/protanopia e contraste mínimo de 3:1 na superfície escura —
+pior par adjacente ΔE 32,3 (CVD) e 33,5 (visão normal).
+
+Rodando localmente:
+
+```bash
+python -m http.server 8000
+# http://localhost:8000
+```
+
+Histórico: a versão anterior do portfólio (pessoal, pré-S³ Labs) está preservada
+na tag [`portfolio-antigo`](https://github.com/schenkel94/portfolio/releases/tag/portfolio-antigo).
 
 ---
 
-## 📫 Contato
-- **Email:** [schenkel.mario@hotmail.com](mailto:schenkel.mario@hotmail.com)
-- **Localização:** Novo Hamburgo, RS - Brasil 🇧🇷
-- **SLA de Resposta:** 24 horas úteis.
+## Contato
+
+- **E-mail:** [schenkel.mario@hotmail.com](mailto:schenkel.mario@hotmail.com)
+- **LinkedIn:** [/in/marioschenkel](https://www.linkedin.com/in/marioschenkel)
+- **Base:** Rio Grande do Sul, Brasil — atendimento remoto
+- **SLA de resposta:** 24 horas úteis
+
+<div align="center">
 
 ---
-<p align="center">
-  <i>"De Negócios para Dados: Análise e Transformação."</i>
-</p>
+
+**S³ LABS** · Engineering better decisions.
+
+</div>

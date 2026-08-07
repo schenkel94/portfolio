@@ -1,0 +1,20 @@
+# dependências
+node_modules/
+package-lock.json
+
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editores
+.vscode/
+.idea/
+*.swp
+
+# ambiente — nunca versionar segredos
+.env
+.env.*
+*.key
+*.pem
+secrets.json
