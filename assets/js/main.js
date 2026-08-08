@@ -18,6 +18,7 @@
   const progress = $('#scrollProgress');
   const sections = $$('main section[id]');
   const navLinks = $$('.nav__link');
+  const wa = $('#waFloat');
 
   let ticking = false;
   function onScroll() {
@@ -35,6 +36,9 @@
     let current = '';
     for (const sec of sections) if (sec.offsetTop <= line) current = sec.id;
     for (const l of navLinks) l.classList.toggle('is-active', l.getAttribute('href') === `#${current}`);
+
+    // o botão do WhatsApp entra depois do hero, para não competir com o CTA
+    if (wa) wa.classList.toggle('is-visible', y > window.innerHeight * 0.55);
 
     parallax();
     ticking = false;

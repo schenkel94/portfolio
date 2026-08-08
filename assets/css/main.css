@@ -848,6 +848,62 @@ select.input option { background: var(--surface); color: var(--ink); }
 .footer__bottom { border-top: 1px solid var(--line); padding-block: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; font-size: .78rem; color: var(--ink-3); }
 .footer__bottom .mono { letter-spacing: .06em; }
 
+/* ========================================================== WHATSAPP ==== */
+/* botão flutuante: discreto em repouso, verde do WhatsApp só no hover — o
+   ícone já carrega o reconhecimento, então a cor não precisa berrar */
+.wa {
+  position: fixed;
+  z-index: 870;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  background: rgba(23, 23, 26, .92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--ink);
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, .9);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition: opacity .45s var(--ease), transform .45s var(--ease),
+              visibility .45s, background-color .3s var(--ease),
+              border-color .3s var(--ease), color .3s var(--ease);
+}
+.wa.is-visible { opacity: 1; visibility: visible; transform: none; }
+.wa:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #0C0C0D;
+}
+.wa svg { width: 22px; height: 22px; flex: none; }
+
+/* o rótulo só existe onde há espaço para ele */
+.wa__label {
+  font-size: .86rem;
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width .42s var(--ease), opacity .32s var(--ease);
+}
+.wa:hover .wa__label, .wa:focus-visible .wa__label { max-width: 11rem; opacity: 1; }
+
+@media (max-width: 620px) {
+  .wa { height: 50px; width: 50px; padding: 0; justify-content: center; }
+  .wa__label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa { transition: none; }
+  .wa__label { transition: none; }
+}
+
 /* ============================================================ MODAIS ==== */
 .modal {
   position: fixed;
