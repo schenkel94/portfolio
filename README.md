@@ -129,14 +129,23 @@ a cada push na `main`.
 └── .github/workflows/      # deploy no GitHub Pages
 ```
 
-**Design system — "Carbon & Chartreuse".** Base carbono (`#0A0C10`) com acento
-chartreuse (`#C8F32C`) e o azul institucional do logo (`#4E8CFF`) usado com
-parcimônia. Tipografia Archivo + JetBrains Mono. Sem framework CSS: o
-`main.css` é escrito à mão sobre custom properties.
+**Design system — "Grafite & Âmbar".** Registro editorial: grafite neutro
+(`#0C0C0D`), off-white cálido (`#EDEBE7`) e âmbar queimado (`#C0954A`) como
+acento tipográfico — nunca como preenchimento decorativo. O azul do logo
+(`#5B87E8`) fica restrito ao wordmark e a detalhes institucionais.
 
-A paleta de séries de dados foi validada em OKLab para separação sob
-deuteranopia/protanopia e contraste mínimo de 3:1 na superfície escura —
-pior par adjacente ΔE 32,3 (CVD) e 33,5 (visão normal).
+Tipografia **Newsreader** (display serif) + **Inter** (corpo) + **IBM Plex Mono**
+(rótulos e dados). Serif em peso leve e tamanho grande é o que carrega a
+autoridade; o CTA primário é off-white sólido para evitar excesso de dourado.
+Sem framework CSS — o `main.css` é escrito à mão sobre custom properties.
+
+Contrastes verificados sobre o fundo: texto 16,4:1 · secundário 7,5:1 ·
+âmbar 7,1:1 (todos acima de WCAG AA).
+
+**Storytelling.** A página não é um catálogo de serviços: ela segue uma
+narrativa — promessa → dores reconhecíveis → causa raiz e autoridade → método →
+frentes → prova → quem conduz → como contratar → ação. O retrato do fundador
+aparece uma única vez, na seção que fala dele.
 
 Rodando localmente:
 

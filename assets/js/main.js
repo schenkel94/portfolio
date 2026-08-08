@@ -23,7 +23,7 @@
   function onScroll() {
     const y = window.scrollY;
 
-    if (nav) nav.classList.toggle('is-stuck', y > 24);
+    if (nav) nav.classList.toggle('is-stuck', y > 20);
 
     if (progress) {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -33,14 +33,10 @@
     // link ativo — a seção que cruza a linha de 38% da viewport
     const line = y + window.innerHeight * 0.38;
     let current = '';
-    for (const sec of sections) {
-      if (sec.offsetTop <= line) current = sec.id;
-    }
-    for (const l of navLinks) {
-      l.classList.toggle('is-active', l.getAttribute('href') === `#${current}`);
-    }
+    for (const sec of sections) if (sec.offsetTop <= line) current = sec.id;
+    for (const l of navLinks) l.classList.toggle('is-active', l.getAttribute('href') === `#${current}`);
 
-    parallax(y);
+    parallax();
     ticking = false;
   }
   function requestScroll() {
@@ -49,29 +45,30 @@
   window.addEventListener('scroll', requestScroll, { passive: true });
   window.addEventListener('resize', requestScroll, { passive: true });
 
-  /* --------------------------------- parallax do retrato (sobe suave) ---- */
+  /* ---------------- parallax do retrato (sobe suave ao rolar a seção) ---- */
   const portraitImg = $('#portraitImg');
-  const hero = $('.hero');
   let py = 0, pyTarget = 0, rafPortrait = null;
 
-  function parallax(y) {
-    if (!portraitImg || !hero || reduced) return;
-    const h = hero.offsetHeight || 1;
-    const t = Math.min(Math.max(y / h, 0), 1.2);
-    // o deslocamento acompanha a altura do quadro para nunca descolar da base
-    const frame = portraitImg.parentElement;
-    const max = Math.min((frame ? frame.offsetHeight : 460) * 0.1, 62);
-    pyTarget = -t * max;
+  function parallax() {
+    if (!portraitImg || reduced) return;
+    const frame = portraitImg.parentElement;          // .portrait
+    const r = frame.getBoundingClientRect();
+    // só calcula enquanto o quadro está na tela
+    if (r.bottom < -80 || r.top > window.innerHeight + 80) return;
+
+    // t = 0 quando o quadro acabou de entrar por baixo; 1 quando saiu por cima
+    const t = 1 - (r.top + r.height) / (window.innerHeight + r.height);
+    // o deslocamento fica abaixo da folga da imagem (bottom: -10%), então
+    // ela nunca descola da base do quadro
+    const max = Math.min(r.height * 0.08, 36);
+    pyTarget = -Math.min(Math.max(t, 0), 1) * max;
+
     if (!rafPortrait) rafPortrait = requestAnimationFrame(easePortrait);
   }
   function easePortrait() {
-    py += (pyTarget - py) * 0.085;   // lerp = movimento macio, sem travar no scroll
+    py += (pyTarget - py) * 0.08;                     // lerp: movimento macio
     portraitImg.style.setProperty('--py', `${py.toFixed(2)}px`);
-    if (Math.abs(pyTarget - py) > 0.12) {
-      rafPortrait = requestAnimationFrame(easePortrait);
-    } else {
-      rafPortrait = null;
-    }
+    rafPortrait = Math.abs(pyTarget - py) > 0.1 ? requestAnimationFrame(easePortrait) : null;
   }
 
   /* ---------------------------------------------------- menu mobile ---- */
@@ -100,7 +97,7 @@
         e.target.classList.add('is-in');
         io.unobserve(e.target);
       }
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.1 });
     revealables.forEach(el => io.observe(el));
   } else {
     revealables.forEach(el => el.classList.add('is-in'));
@@ -110,14 +107,12 @@
   const counters = $$('[data-count]');
   function runCounter(el) {
     const target = parseFloat(el.dataset.count);
-    const suffix = el.dataset.suffix || '';
-    if (reduced) { el.textContent = target + suffix; return; }
-    const dur = 1500;
+    if (reduced) { el.textContent = target; return; }
+    const dur = 1300;
     const t0 = performance.now();
     const tick = (now) => {
       const p = Math.min((now - t0) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -138,9 +133,7 @@
   /* ----------------------------------------------------- marquee ------- */
   // duplica os itens para o translateX(-50%) fechar o loop sem salto
   const track = $('#marqueeTrack');
-  if (track) {
-    track.innerHTML += track.innerHTML;
-  }
+  if (track) track.innerHTML += track.innerHTML;
 
   /* --------------------------------------- spotlight que segue o mouse -- */
   $$('[data-spotlight]').forEach(card => {
@@ -152,10 +145,9 @@
   });
 
   /* --------------------------------------- método: trilho + etapas ----- */
-  const method = $('#method');
   const rail = $('#methodRail');
   const steps = $$('[data-step]');
-  if (method && rail && 'IntersectionObserver' in window) {
+  if (rail && 'IntersectionObserver' in window) {
     const ioS = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (!e.isIntersecting) continue;
@@ -164,7 +156,7 @@
         rail.style.setProperty('--p', (done / steps.length).toFixed(3));
         ioS.unobserve(e.target);
       }
-    }, { threshold: 0.45 });
+    }, { threshold: 0.4 });
     steps.forEach(s => ioS.observe(s));
   } else {
     steps.forEach(s => s.classList.add('is-on'));
@@ -172,18 +164,15 @@
   }
 
   /* ----------------------------------------------------- meters -------- */
-  const meterWraps = $$('[data-meters]');
   if ('IntersectionObserver' in window) {
     const ioM = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (!e.isIntersecting) continue;
-        $$('.meter', e.target).forEach((m, i) =>
-          setTimeout(() => m.classList.add('is-on'), i * 110)
-        );
+        $$('.meter', e.target).forEach((m, i) => setTimeout(() => m.classList.add('is-on'), i * 100));
         ioM.unobserve(e.target);
       }
     }, { threshold: 0.35 });
-    meterWraps.forEach(w => ioM.observe(w));
+    $$('[data-meters]').forEach(w => ioM.observe(w));
   } else {
     $$('.meter').forEach(m => m.classList.add('is-on'));
   }
@@ -213,8 +202,7 @@
     if (!q || !a) return;
     q.addEventListener('click', () => {
       const open = item.classList.contains('is-open');
-      // acordeão: fecha os outros
-      $$('.faq__item.is-open').forEach(other => {
+      $$('.faq__item.is-open').forEach(other => {     // acordeão: fecha os outros
         if (other === item) return;
         other.classList.remove('is-open');
         $('.faq__q', other).setAttribute('aria-expanded', 'false');
@@ -247,9 +235,7 @@
     document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
-  $$('[data-modal]').forEach(btn =>
-    btn.addEventListener('click', () => openModal(btn.dataset.modal))
-  );
+  $$('[data-modal]').forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.modal)));
   $$('.modal').forEach(m => {
     $$('[data-close]', m).forEach(b => b.addEventListener('click', () => closeModal(m)));
     m.addEventListener('click', (e) => { if (e.target === m) closeModal(m); });
@@ -260,107 +246,16 @@
     if (open) closeModal(open);
   });
 
-  /* ------------------------------------------ canvas do hero ----------- */
-  // rede de nós ligados por linhas — leitura de "grafo de dados", sutil
-  const canvas = $('#hero-canvas');
-  if (canvas && !reduced) {
-    const ctx = canvas.getContext('2d', { alpha: true });
-    let w = 0, h = 0, dpr = 1, nodes = [], raf = null, visible = true;
-
-    const LINK = 148;   // distância máxima de ligação
-
-    function resize() {
-      const r = canvas.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = r.width; h = r.height;
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      seed();
-    }
-
-    function seed() {
-      const density = Math.round((w * h) / 26000);
-      const count = Math.max(18, Math.min(density, 74));
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: (Math.random() - 0.5) * 0.22,
-        r: Math.random() * 1.5 + 0.7
-      }));
-    }
-
-    function frame() {
-      ctx.clearRect(0, 0, w, h);
-
-      for (const n of nodes) {
-        n.x += n.vx; n.y += n.vy;
-        if (n.x < 0 || n.x > w) n.vx *= -1;
-        if (n.y < 0 || n.y > h) n.vy *= -1;
-      }
-
-      // ligações
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i], b = nodes[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const d = Math.hypot(dx, dy);
-          if (d > LINK) continue;
-          const alpha = (1 - d / LINK) * 0.17;
-          ctx.strokeStyle = `rgba(200, 243, 44, ${alpha.toFixed(3)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-
-      // nós
-      for (const n of nodes) {
-        ctx.fillStyle = 'rgba(200, 243, 44, 0.42)';
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      raf = visible ? requestAnimationFrame(frame) : null;
-    }
-
-    // só anima enquanto o hero está na tela
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver((entries) => {
-        visible = entries[0].isIntersecting;
-        if (visible && !raf) raf = requestAnimationFrame(frame);
-      }, { threshold: 0 }).observe(canvas);
-    }
-
-    let rt = null;
-    window.addEventListener('resize', () => {
-      clearTimeout(rt);
-      rt = setTimeout(resize, 180);
-    }, { passive: true });
-
-    resize();
-    raf = requestAnimationFrame(frame);
-  }
-
-  /* --------------------------------------- validação leve do form ------ */
+  /* --------------------------------------- feedback de envio do form --- */
   const form = $('#contactForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', () => {
+      if (!form.checkValidity()) return;              // o browser mostra o erro
       const btn = $('button[type="submit"]', form);
-      if (!form.checkValidity()) return;           // deixa o browser mostrar o erro
-      if (btn) {
-        btn.disabled = true;
-        btn.style.opacity = '.72';
-        btn.textContent = 'Enviando…';
-      }
-      // não faz preventDefault: o POST para o formsubmit.co segue normalmente
+      if (btn) { btn.disabled = true; btn.style.opacity = '.7'; btn.textContent = 'Enviando…'; }
+      // sem preventDefault: o POST para o formsubmit.co segue normalmente
     });
   }
 
-  /* ---------------------------------- primeira pintura do estado ------- */
   onScroll();
 })();
